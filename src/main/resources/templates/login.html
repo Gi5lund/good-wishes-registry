@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" th:href="@{../login.css}" href="../static/login.css">
 </head>
 <body>
 <div class="login-box">
@@ -16,14 +16,14 @@
         <div class="user-box">
             <input id="password" type="password" name="pwd" required="">
             <label for="password">Password</label>
-        </div class="button">
-        <a href="#">
-            <input type="submit" hidden="">
+        </div>
+        <a>
+
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            Submit
+            <input type="submit" value="Submit">
         </a>
     </form>
 </div>
