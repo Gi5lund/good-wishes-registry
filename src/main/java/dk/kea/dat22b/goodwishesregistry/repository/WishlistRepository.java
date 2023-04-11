@@ -53,7 +53,7 @@ public class WishlistRepository
 
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String SQLcreatewish = "INSERT INTO wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_descreption, item_URL, item_price) VALUES(?,?,?,?,?,?,?)";
+				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price) VALUES(?,?,?,?,?,?,?)";
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
 				preparedStatement.setInt(1, wishListItems.getWishListId());
