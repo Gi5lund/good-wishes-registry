@@ -57,7 +57,7 @@ public class WishlistRepository
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
 				preparedStatement.setInt(1, wishListItems.getWishListId());
-				preparedStatement.setInt(2, wishListItems.getWishListId());
+				preparedStatement.setInt(2, wishListItems.getItemLineId());
 				preparedStatement.setString(3, wishListItems.getItemName());
 				preparedStatement.setInt(4, wishListItems.getItemQTY());
 				preparedStatement.setString(5, wishListItems.getItemDescription());

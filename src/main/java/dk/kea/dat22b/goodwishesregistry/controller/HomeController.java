@@ -15,12 +15,12 @@ public class HomeController
 			this.wishlistRepository = wishlistRepository;
 		}
 
-		@GetMapping(/"createwish")
+		@GetMapping("/createwish")
 		public String showCreateWish(){
 			return "createwish";
 		}
 
-		@PostMapping(/"createwish")
+		@PostMapping("/createwish")
 		public String createWish(@RequestParam("wishListId") int newWishListId,
 								 @RequestParam("itemLineId") int newItemLineId,
 								 @RequestParam("itemName") String newItemName,

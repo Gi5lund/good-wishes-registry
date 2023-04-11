@@ -10,24 +10,24 @@
         <form action="createwish" method="post">
 
 
-            <input id="wishListId-field" name="wishListId" type="hidden" th:value="${.wishListId}"> <br>
+            <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItems.wishListId}"> <br>
 
-            <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${.itemLineId}"> <br>
+            <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItems.itemLineId}"> <br>
 
             <label for="ItemName-field">Navn på ønsket:</label>
-            <input id="itemName-field" name="itemName" type="text" th:value="${.itemName}"> <br>
+            <input id="itemName-field" name="itemName" type="text" th:value="${wishListItems.itemName}"> <br>
 
             <label for="itemQTY-field">Antal:</label>
-            <input id="itemQTY-field" name="itemQTY" type="text" th:value="${.itemQTY}"> <br>
+            <input id="itemQTY-field" name="itemQTY" type="text" th:value="${wishListItems.itemQTY}"> <br>
 
             <label for="itemDescreption-field">Beskrivelse:</label>
-            <input id="itemDescreption-field" name="itemDescreption" type="text" th:value="${.itemDescreption}"> <br>
+            <input id="itemDescreption-field" name="itemDescreption" type="text" th:value="${wishListItems.itemDescreption}"> <br>
 
             <label for="itemURL-field">Indsæt link:</label>
-            <input id="itemURL-field" name="itemURL" type="text" th:value="${.itemURL}"> <br>
+            <input id="itemURL-field" name="itemURL" type="text" th:value="${wishListItems.itemURL}"> <br>
 
             <label for="itemPrice-field">Pris:</label>
-            <input id="itemPrice-field" name="itemPrice" type="text" th:value="${.itemPrice}"> <br>
+            <input id="itemPrice-field" name="itemPrice" type="text" th:value="${wishListItems.itemPrice}"> <br>
 
 
         </form>
