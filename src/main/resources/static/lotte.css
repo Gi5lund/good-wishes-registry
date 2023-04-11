@@ -1,6 +1,6 @@
 header {
-    background-image: url("wishes.png"), linear-gradient(to top, #d6fcd6, #ffffff);
-    background-repeat: no-repeat, no-repeat;
+    background-image: linear-gradient(to top, #d6fcd6, #ffffff);
+    background-repeat: no-repeat;
     background-position: 10%;
     background-blend-mode: hard-light;
     opacity: 100%;
@@ -17,20 +17,30 @@ header {
 header * {
     display: inline;
 }
+
 header li {
     margin: 20px;
 }
+
 header li a {
     color: black;
     font-weight: bold;
     font-size: 20px;
     text-decoration: none;
+
 }
 header li a:hover {
     font-size: 22px;
 }
-ul {
-    margin-left:600px;
+
+#link{
+    margin-top: 50px;
+}
+#wishes {
+    float: left;
+    margin-left: 50px;
+    opacity: 70%;
+
 }
 
 .container {
