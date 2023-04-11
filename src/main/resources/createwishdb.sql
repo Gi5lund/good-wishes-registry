@@ -1,3 +1,4 @@
+DROP DATABASE if exists wishlist;
 create database wishlist;
 use wishlist;
 CREATE TABLE wish_user(
