@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create wish</title>
+</head>
+<body>
+<div class="container">
+    <table>
+        <form action="createwish" method="post">
+
+
+            <input id="wishListId-field" name="wishListId" type="hidden" th:value="${.wishListId}"> <br>
+
+            <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${.itemLineId}"> <br>
+
+            <label for="ItemName-field">Navn på ønsket:</label>
+            <input id="itemName-field" name="itemName" type="text" th:value="${.itemName}"> <br>
+
+            <label for="itemQTY-field">Antal:</label>
+            <input id="itemQTY-field" name="itemQTY" type="text" th:value="${.itemQTY}"> <br>
+
+            <label for="itemDescreption-field">Beskrivelse:</label>
+            <input id="itemDescreption-field" name="itemDescreption" type="text" th:value="${.itemDescreption}"> <br>
+
+            <label for="itemURL-field">Indsæt link:</label>
+            <input id="itemURL-field" name="itemURL" type="text" th:value="${.itemURL}"> <br>
+
+            <label for="itemPrice-field">Pris:</label>
+            <input id="itemPrice-field" name="itemPrice" type="text" th:value="${.itemPrice}"> <br>
+
+
+        </form>
+    </table>
+
+</div>
+</body>
+</html>
