@@ -71,4 +71,42 @@ public class WishlistRepository
 				e.printStackTrace();
 			}
 		}
+
+		public WishUser getUserById(int userId){
+			WishUser user =new WishUser();
+			try{
+				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
+				Statement statement=connection.createStatement();
+				final String SQL_USER="SELECT * FROM wishlist.wish_user WHERE"+userId+"= user_id";
+				ResultSet resultSet=statement.executeQuery(SQL_USER);
+				while (resultSet.next()){
+					int user_Id=resultSet.getInt(1);
+					String userName=resultSet.getString(2);
+					String userPassword=resultSet.getString(3);
+					 user.setUserId(user_Id);
+					 user.setUserName(userName);
+					 user.setUserPassword(userPassword);
+				}
+
+			}catch(SQLException e){
+				System.out.println("user could not be retrieved");
+				e.printStackTrace();
+			}
+			return user;
+		}
+		public void addUser(WishUser wishUser){
+
+			try {
+				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
+				final String SQL_CREATE_USER="INSERT INTO wishlist.wish_user(user_name,user_password) VALUES(?,?)";
+				PreparedStatement preparedStatement=connection.prepareStatement(SQL_CREATE_USER);
+				preparedStatement.setString(1,wishUser.getUserName());
+				preparedStatement.setString(2,wishUser.getUserPassword());
+				preparedStatement.executeUpdate();
+
+			}catch (SQLException e){
+				System.out.println("could not create user");
+				e.printStackTrace();
+			}
+		}
 	}
