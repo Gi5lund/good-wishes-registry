@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 import dk.kea.dat22b.goodwishesregistry.utility.ConnectionManager;
 import dk.kea.dat22b.goodwishesregistry.model.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +47,28 @@ public class WishlistRepository
 
 			}
 			return wishlistitems;
+		}
+
+		public void addWish(WishListItems wishListItems) {
+
+			try {
+				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
+				final String SQLcreatewish = "INSERT INTO wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_descreption, item_URL, item_price) VALUES(?,?,?,?,?,?,?)";
+				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
+
+				preparedStatement.setInt(1, wishListItems.getWishListId());
+				preparedStatement.setInt(2, wishListItems.getWishListId());
+				preparedStatement.setString(3, wishListItems.getItemName());
+				preparedStatement.setInt(4, wishListItems.getItemQTY());
+				preparedStatement.setString(5, wishListItems.getItemDescription());
+				preparedStatement.setString(6, wishListItems.getItemURL());
+				preparedStatement.setDouble(7, wishListItems.getItemPrice());
+
+				preparedStatement.executeUpdate();
+
+			} catch (SQLException e) {
+				System.out.println("Could not create new wish");
+				e.printStackTrace();
+			}
 		}
 	}

@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController
 	{
+		WishlistRepository wishlistRepository;
+		public HomeController(WishlistRepository wishlistRepository){
+			this.wishlistRepository = wishlistRepository;
+		}
 
 		@GetMapping(/"createwish")
 		public String showCreateWish(){
@@ -35,7 +39,7 @@ public class HomeController
 			newWish.setItemPrice(newItemPrice);
 
 			//Gem nyt ønske
-			WishlistRepository.addWish(newWish);
+			wishlistRepository.addWish(newWish);
 
 			return "redirect:/";
 
