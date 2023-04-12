@@ -1,6 +1,7 @@
 package dk.kea.dat22b.goodwishesregistry.controller;
 
 import dk.kea.dat22b.goodwishesregistry.model.WishListItems;
+import dk.kea.dat22b.goodwishesregistry.model.WishUser;
 import dk.kea.dat22b.goodwishesregistry.repository.WishlistRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,8 @@ public class HomeController
 			newWish.setItemDescription(newItemDescreption);
 			newWish.setItemURL(newItemURL);
 			newWish.setItemPrice(newItemPrice);
+			newWish.setItemReserved(false);
+			newWish.getItemReservedBy("");
 
 			//Gem nyt ønske
 			wishlistRepository.addWish(newWish);
@@ -55,5 +58,13 @@ public class HomeController
 
 			}
 			return "login";
+		}
+		@PostMapping("/adduser")
+		public String createUser(@RequestParam(userName) String userName,@RequestParam(userPassword) String userPassword){
+			WishUser newUser=new WishUser();
+			newUser.setUserName(userName);
+			newUser.setUserPassword(userPassword);
+			wishlistRepository.addUser(newUser);
+			return "redirect:/";
 		}
 	}
