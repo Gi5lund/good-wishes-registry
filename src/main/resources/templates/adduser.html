@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Add User</title>
+    <link rel="stylesheet" th:href="@{../css/login.css}" href="../static/css/login.css">
 </head>
 <body>
-<div>
+<div class="login-box">
 <form action="/adduser" method="post">
+    <div class="user-box">
     <input id="user-id" name="userId" type="hidden">
-    <div>
-    <label for="name-field"> Username</label>
+        <input id="name-field" name="userName" type="text" required="">
+        <label for="name-field"> Username</label>
     </div>
-    <div>
-    <input id="name-field" name="userName" type="text">
-    </div>
-    <div>
+    <div class="user-box">
+        <input id="password" name="userPassword" type="password" required=" ">
         <label for="password">Password</label>
-    </div>
-    <div>
-        <input id="password" name="userPassword" type="password">
     </div>
     <div>
         <input type="submit" value="Create new user">

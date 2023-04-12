@@ -38,6 +38,8 @@ public class HomeController
 			newWish.setItemDescription(newItemDescreption);
 			newWish.setItemURL(newItemURL);
 			newWish.setItemPrice(newItemPrice);
+			newWish.setItemReserved(false);
+			newWish.setItemReservedBy("");
 
 			//Gem nyt ønske
 			wishlistRepository.addWish(newWish);
@@ -62,11 +64,19 @@ public class HomeController
 			return "jacob";
 		}
 		@PostMapping("/adduser")
-		public String createUser(@RequestParam(userName) String userName,@RequestParam(userPassword) String userPassword){
+		public String createUser(@RequestParam("userName") String userName,@RequestParam("userPassword") String userPassword){
 			WishUser newUser=new WishUser();
 			newUser.setUserName(userName);
 			newUser.setUserPassword(userPassword);
 			wishlistRepository.addUser(newUser);
-			return "redirect:/";
+			return "redirect:jacob";
+		}
+		@GetMapping("/login")
+		public String showLogin(){
+			return "/login";
+		}
+		@GetMapping("/adduser")
+		public String showAddUser(){
+			return "/adduser";
 		}
 	}
