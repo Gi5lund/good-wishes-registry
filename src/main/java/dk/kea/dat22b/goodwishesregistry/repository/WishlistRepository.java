@@ -70,16 +70,9 @@ public class WishlistRepository
 				System.out.println("Could not create new wish");
 				e.printStackTrace();
 			}
-
-			public void updateWish(WishListItems wishListItems){
-				final String UPDATE_QUERY = "UPDATE wish_list_items SET item_name=? item_QTY=? item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
-
-				try{
-
-				}catch(SQLException e){
-					System.out.println("Could not update wish");
-					e.printStackTrace();
-				}
-			}
 		}
+
+
+
+
 	}
