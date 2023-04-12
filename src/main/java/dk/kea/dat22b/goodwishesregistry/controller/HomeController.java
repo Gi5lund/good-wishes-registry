@@ -38,8 +38,6 @@ public class HomeController
 			newWish.setItemDescription(newItemDescreption);
 			newWish.setItemURL(newItemURL);
 			newWish.setItemPrice(newItemPrice);
-			newWish.setItemReserved(false);
-			newWish.getItemReservedBy("");
 
 			//Gem nyt ønske
 			wishlistRepository.addWish(newWish);
@@ -58,6 +56,10 @@ public class HomeController
 
 			}
 			return "login";
+		}
+		@GetMapping("/jacob")
+		public String login(){
+			return "jacob";
 		}
 		@PostMapping("/adduser")
 		public String createUser(@RequestParam(userName) String userName,@RequestParam(userPassword) String userPassword){
