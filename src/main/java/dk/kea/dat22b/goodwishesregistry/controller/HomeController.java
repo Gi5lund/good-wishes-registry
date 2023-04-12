@@ -56,4 +56,8 @@ public class HomeController
 			}
 			return "login";
 		}
+		@GetMapping("/jacob")
+		public String login(){
+			return "jacob";
+		}
 	}

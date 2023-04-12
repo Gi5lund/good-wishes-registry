@@ -2,7 +2,6 @@ package dk.kea.dat22b.goodwishesregistry.model;
 
 public class WishList {
     private int wishListId;
-    private int wishItemCount;
     private int userId;
     private String wishListName;
     private String occation;
@@ -12,7 +11,6 @@ public class WishList {
 
     public WishList(int wishListId, int wishItemCount, int userId, String wishListName, String occation) {
         this.wishListId = wishListId;
-        this.wishItemCount = wishItemCount;
         this.userId = userId;
         this.wishListName = wishListName;
         this.occation = occation;
@@ -24,14 +22,6 @@ public class WishList {
 
     public void setWishListId(int wishListId) {
         this.wishListId = wishListId;
-    }
-
-    public int getWishItemCount() {
-        return wishItemCount;
-    }
-
-    public void setWishItemCount(int wishItemCount) {
-        this.wishItemCount = wishItemCount;
     }
 
     public int getUserId() {
@@ -62,7 +52,6 @@ public class WishList {
     public String toString() {
         return "WishList{" +
                 "wishListId=" + wishListId +
-                ", wishItemCount=" + wishItemCount +
                 ", userId=" + userId +
                 ", wishListName='" + wishListName + '\'' +
                 ", occation='" + occation + '\'' +
