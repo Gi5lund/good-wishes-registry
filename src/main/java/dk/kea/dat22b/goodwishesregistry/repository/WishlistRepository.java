@@ -72,7 +72,18 @@ public class WishlistRepository
 			}
 		}
 
+		public void updateWish(WishListItems wishListItems){
+			final String UPDATE_QUERY = "UPDATE wish_list_items SET item_name=? item_QTY=? item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
 
+			try{
+				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
+				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY);
+
+			}catch(SQLException e){
+				System.out.println("Could not update wish");
+				e.printStackTrace();
+			}
+		}
 
 
 	}
