@@ -53,7 +53,7 @@ public class WishlistRepository
 
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String SQLcreatewish = "INSERT INTO wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_descreption, item_URL, item_price) VALUES(?,?,?,?,?,?,?)";
+				final String SQLcreatewish = "INSERT INTO wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price) VALUES(?,?,?,?,?,?,?)";
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
 				preparedStatement.setInt(1, wishListItems.getWishListId());
@@ -69,6 +69,17 @@ public class WishlistRepository
 			} catch (SQLException e) {
 				System.out.println("Could not create new wish");
 				e.printStackTrace();
+			}
+
+			public void updateWish(WishListItems wishListItems){
+				final String UPDATE_QUERY = "UPDATE wish_list_items SET item_name=? item_QTY=? item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
+
+				try{
+
+				}catch(SQLException e){
+					System.out.println("Could not update wish");
+					e.printStackTrace();
+				}
 			}
 		}
 	}
