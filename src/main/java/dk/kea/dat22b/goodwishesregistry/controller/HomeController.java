@@ -3,7 +3,9 @@ package dk.kea.dat22b.goodwishesregistry.controller;
 import dk.kea.dat22b.goodwishesregistry.model.WishListItems;
 import dk.kea.dat22b.goodwishesregistry.repository.WishlistRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,7 +47,43 @@ public class HomeController
 
 		}
 
+		@GetMapping("/updatewish/{itemListId}")
+		public String showUpdateWish(@PathVariable("itemLineId") int updateWish, Model model){
 
+			WishListItems updateWishListItems = wishlistRepository.findWishById(updateWish);
+
+			model.addAttribute("wishListItem", updateWishListItems);
+
+			return "updatewish";
+		}
+
+		@PostMapping("/updatewish")
+		public String updateWishItem(@RequestParam("wishListId") int updateWishListId,
+									 @RequestParam("itemLineId") int updateItemLineId,
+								 	 @RequestParam("itemName") String updateItemName,
+								 	 @RequestParam("itemQTY") int updateItemQTY,
+									 @RequestParam("itemDescreption") String updateItemDescreption,
+									 @RequestParam("itemURL") String updateItemURL,
+									 @RequestParam("itemPrice") double updateItemPrice,
+									 @RequestParam("itemReserved") boolean updateItemReserved,
+									 @RequestParam("itemReservedBy") String updateItemReservedBy){
+
+			WishListItems updateWishItem = new WishListItems(updateWishListId, updateItemLineId, updateItemName, updateItemQTY, updateItemDescreption,
+															updateItemURL, 	updateItemPrice, updateItemReserved,updateItemReservedBy);
+
+			wishlistRepository.updateWish(updateWishItem);
+
+			return "/redirect:wishlist";
+		}
+
+		@GetMapping("/delete/{itemLineId}")
+		public String deleteWish(@PathVariable("itemLineId") int deleteWish){
+			//slet fra repository
+			wishlistRepository.deleteById(deleteWish);
+
+			//returner til index-siden
+			return "redirect:wishlist";
+		}
 
 
 		@PostMapping("/login")
