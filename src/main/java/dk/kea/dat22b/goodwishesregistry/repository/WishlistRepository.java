@@ -109,4 +109,45 @@ public class WishlistRepository
 				e.printStackTrace();
 			}
 		}
+		public List<WishList> getWishList() {
+			List<WishList> wishListe = new ArrayList<>();
+			try {
+				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
+				Statement statement = connection.createStatement();
+				final String SQL_QUERY = "SELECT * FROM wishlist.wish_list";
+				ResultSet resultSet = statement.executeQuery(SQL_QUERY);
+				while(resultSet.next()) {
+					int wish_list_id = resultSet.getInt(1);
+					String wish_list_name = resultSet.getString(2);
+					String wish_list_occation = resultSet.getString(3);
+					int user_id = resultSet.getInt(4);
+					WishList wishlist = new WishList(wish_list_id, user_id, wish_list_name, wish_list_occation);
+					wishListe.add(wishlist);
+				}
+			}
+			catch(SQLException e) {
+				System.out.println("Cannot connect to database.");
+				e.printStackTrace();
+			}
+			return wishListe;
+		}
+		public void addWishList(WishList wishlist){
+			try{
+				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
+				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list(wish_list_id, wish_list_name, occation, user_id) VALUES(?,?,?,?) ";
+				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
+
+				//set attributes in prepared statement
+				preparedStatement.setInt(1, wishlist.getWishListId());
+				preparedStatement.setString(2, wishlist.getWishListName());
+				preparedStatement.setString(3, wishlist.getOccation());
+				preparedStatement.setInt(4,wishlist.getUserId());
+				//execute
+				preparedStatement.executeUpdate();
+			}
+			catch(SQLException e){
+				System.out.println("Could not create Wishlist");
+				e.printStackTrace();
+			}
+		}
 	}

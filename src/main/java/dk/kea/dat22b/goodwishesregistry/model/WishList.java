@@ -15,6 +15,12 @@ public class WishList {
         this.wishListName = wishListName;
         this.occation = occation;
     }
+    public WishList(int wishListId, int userId, String wishListName, String occation) {
+        this.wishListId = wishListId;
+        this.userId = userId;
+        this.wishListName = wishListName;
+        this.occation = occation;
+    }
 
     public int getWishListId() {
         return wishListId;
