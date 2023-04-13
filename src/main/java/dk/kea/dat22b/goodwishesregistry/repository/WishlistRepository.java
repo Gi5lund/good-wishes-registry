@@ -134,7 +134,7 @@ public class WishlistRepository
 			}
 		}
 		public void updateWish(WishListItems wishListItems){
-			final String UPDATE_QUERY = "UPDATE wish_list_items SET item_name=?, item_QTY=?, item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
+			final String UPDATE_QUERY = "UPDATE wishlist.wish_list_items SET item_name=?, item_QTY=?, item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
 
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
@@ -159,7 +159,7 @@ public class WishlistRepository
 			}
 		}
 		public WishListItems findWishById(int itemLineId){
-			final String FIND_QUERY = "SELECT * FROM wish_list_items WHERE item_line_id = ?";
+			final String FIND_QUERY = "SELECT * FROM wishlist.wish_list_items WHERE item_line_id = ?";
 
 			WishListItems wishListItems = new WishListItems();
 			wishListItems.setItemLineId(itemLineId);
@@ -192,7 +192,7 @@ public class WishlistRepository
 		}
 		public void deleteById(int itemLineId){
 			//SQL-query
-			final String DELETE_QUERY = "DELETE FROM wish_list_items WHERE item_line_id =?";
+			final String DELETE_QUERY = "DELETE FROM wishlist.wish_list_items WHERE item_line_id =?";
 
 			try{
 				//Connect til DB

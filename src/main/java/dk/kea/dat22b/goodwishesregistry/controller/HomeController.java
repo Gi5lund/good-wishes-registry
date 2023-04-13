@@ -96,12 +96,13 @@ public class HomeController
 
 		@PostMapping("/login")
 		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session ){
-
-			if (username.equals("Morten") && password.equals("123")){
-				return "testretur";
-
+			WishUser user=wishlistRepository.loginUser(username,password);
+			if (user.getUserName()==null){
+				return "login";
 			}
-			return "login";
+			session.setAttribute("UserID",user.getUserId());
+			session.setAttribute("UserName",user.getUserName());
+			return "/show_user_page";
 		}
 		@GetMapping("/jacob")
 		public String login(){
