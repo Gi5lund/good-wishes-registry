@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Din Side</title>
+    <title>Eksempel Jacob</title>
+    <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
 </head>
+<body>
+<header th:replace="fragments/fragment :: topnav">
+
+</header>
+<div>
+    <h2 th:text="'Velkommen '+${session.UserName}"></h2>
+</div>
 <body>
 
 </body>

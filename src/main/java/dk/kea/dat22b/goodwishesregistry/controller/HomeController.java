@@ -101,6 +101,7 @@ public class HomeController
 		@PostMapping("/login")
 		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session ){
 			WishUser user=wishlistRepository.loginUser(username,password);
+			// the portion below should check if user exist, but may be faulty - or maybe azure isn't running
 			if (user.getUserName()==null){
 				return "login";
 			}
@@ -127,5 +128,10 @@ public class HomeController
 		@GetMapping("/adduser")
 		public String showAddUser(){
 			return "/adduser";
+		}
+		@GetMapping("/show_user_page")
+		public String userPage(HttpSession session,Model wishUserModel){
+
+			return "/show_user_page";
 		}
 	}
