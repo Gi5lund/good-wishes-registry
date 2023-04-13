@@ -94,10 +94,36 @@ public class WishlistRepository
 			}
 			return user;
 		}
+		public WishUser loginUser(String username,String userpassword){
+			WishUser user=new WishUser();
+			try {
+				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
+				Statement statement=connection.createStatement();
+				final String SQL_LOGIN="SELECT * FROM wishlist.wish_user WHERE user_name="+username+" AND user_password="+userpassword;
+				ResultSet resultSet=statement.executeQuery(SQL_LOGIN);
+				while (resultSet.next()){
+					int user_Id=resultSet.getInt(1);
+					String userName=resultSet.getString(2);
+					String userPassword=resultSet.getString(3);
+					user.setUserId(user_Id);
+					user.setUserName(userName);
+					user.setUserPassword(userPassword);
+				}
+
+			}catch(SQLException e){
+				System.out.println("Unable to login - try again");
+				e.printStackTrace();
+			}
+			return user;
+
+		}
 		public void addUser(WishUser wishUser){
 
 			try {
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
+				// check if username+password already exists
+
+				//else create user
 				final String SQL_CREATE_USER="INSERT INTO wishlist.wish_user(user_name,user_password) VALUES(?,?)";
 				PreparedStatement preparedStatement=connection.prepareStatement(SQL_CREATE_USER);
 				preparedStatement.setString(1,wishUser.getUserName());
