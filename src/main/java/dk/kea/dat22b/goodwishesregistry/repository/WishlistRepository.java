@@ -250,4 +250,54 @@ public class WishlistRepository
 				e.printStackTrace();
 			}
 		}
+		public void updateWishList(WishList wishlist){
+			final String UPDATE_QUERY = "UPDATE wishlist.wish_list SET wish_list_name = ?, occation = ? WHERE wish_list_id = ?";
+
+			try{
+				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
+
+				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY);
+
+				String wish_list_name = wishlist.getWishListName();
+				String occation = wishlist.getOccation();
+				int wish_list_id = wishlist.getWishListId();
+
+				preparedStatement.setString(1,wish_list_name);
+				preparedStatement.setString(2, wishlist.getOccation());
+				preparedStatement.setInt(3 ,wish_list_id);
+
+				preparedStatement.executeUpdate();
+			}
+			catch(SQLException e) {
+				System.out.println("Could not update wishlist.");
+				e.printStackTrace();
+			}
+		}
+		public WishList findWishListById(int id){
+
+			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?";
+			WishList wishlist = new WishList();
+			wishlist.setWishListId(id);
+			try{
+
+				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
+
+				PreparedStatement preparedStatement = connection.prepareStatement(FIND_QUERY);
+
+				preparedStatement.setInt(1, id);
+
+				ResultSet resultSet = preparedStatement.executeQuery();
+
+				resultSet.next();
+				String wish_list_name = resultSet.getString(2);
+				String occation = resultSet.getString(3);
+				wishlist.setWishListName(wish_list_name);
+				wishlist.setOccation(occation);
+			} catch(SQLException e) {
+				System.out.println("could not find wishlist");
+				e.printStackTrace();
+			}
+			return wishlist;
+		}
+		//TODO DeleteWishList
 	}
