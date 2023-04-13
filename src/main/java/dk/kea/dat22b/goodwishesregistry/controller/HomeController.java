@@ -3,6 +3,7 @@ package dk.kea.dat22b.goodwishesregistry.controller;
 import dk.kea.dat22b.goodwishesregistry.model.WishListItems;
 import dk.kea.dat22b.goodwishesregistry.model.WishUser;
 import dk.kea.dat22b.goodwishesregistry.repository.WishlistRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,10 @@ public class HomeController
 		WishlistRepository wishlistRepository;
 		public HomeController(WishlistRepository wishlistRepository){
 			this.wishlistRepository = wishlistRepository;
+		}
+		@GetMapping("/")
+		public String index(){
+			return "index";
 		}
 
 		@GetMapping("/createwish")
@@ -90,7 +95,8 @@ public class HomeController
 
 
 		@PostMapping("/login")
-		public String login(@RequestParam("username") String username,@RequestParam("pwd") String password){
+		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session ){
+
 			if (username.equals("Morten") && password.equals("123")){
 				return "testretur";
 
