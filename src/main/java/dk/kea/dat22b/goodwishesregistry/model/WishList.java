@@ -1,11 +1,15 @@
 package dk.kea.dat22b.goodwishesregistry.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WishList {
     private int wishListId;
     private int userId;
     private String wishListName;
     private String occation;
 
+    private List<WishListItems> Wisher = new ArrayList<>();
     public WishList() {
     }
 
