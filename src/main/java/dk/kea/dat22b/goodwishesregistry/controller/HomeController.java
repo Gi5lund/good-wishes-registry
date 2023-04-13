@@ -58,6 +58,7 @@ public class HomeController
 
 		@PostMapping("/login")
 		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session ){
+
 			if (username.equals("Morten") && password.equals("123")){
 				return "testretur";
 
