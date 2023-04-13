@@ -53,7 +53,7 @@ public class WishlistRepository
 
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String SQLcreatewish = "INSERT INTO wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price, item_resereved, item_reserved_by) VALUES(?,?,?,?,?,?,?,?,?)";
+				final String SQLcreatewish = "INSERT INTO wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price, item_reserved, item_reserved_by) VALUES(?,?,?,?,?,?,?,?,?)";
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
 				preparedStatement.setInt(1, wishListItems.getWishListId());
@@ -75,7 +75,7 @@ public class WishlistRepository
 		}
 
 		public void updateWish(WishListItems wishListItems){
-			final String UPDATE_QUERY = "UPDATE wish_list_items SET item_name=? item_QTY=? item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
+			final String UPDATE_QUERY = "UPDATE wish_list_items SET item_name=?, item_QTY=?, item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
 
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
@@ -101,7 +101,7 @@ public class WishlistRepository
 		}
 
 		public WishListItems findWishById(int itemLineId){
-			final String FIND_QUERY = "SELECT * FROM wish_list_items WHERE id = ?";
+			final String FIND_QUERY = "SELECT * FROM wish_list_items WHERE item_line_id = ?";
 
 			WishListItems wishListItems = new WishListItems();
 			wishListItems.setItemLineId(itemLineId);
@@ -135,7 +135,7 @@ public class WishlistRepository
 
 		public void deleteById(int itemLineId){
 			//SQL-query
-			final String DELETE_QUERY = "DELETE FROM wish_list_item WHERE item_line_id =?";
+			final String DELETE_QUERY = "DELETE FROM wish_list_items WHERE item_line_id =?";
 
 			try{
 				//Connect til DB
@@ -154,49 +154,6 @@ public class WishlistRepository
 				System.out.println("Could not delete item");
 			}
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		public List<WishList> getWishList() {
 			List<WishList> wishListe = new ArrayList<>();
 			try {
