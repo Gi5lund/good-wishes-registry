@@ -6,19 +6,9 @@
   <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
 </head>
 <body>
-<header>
-    <div class="logo"><a href="jacob.html"> <img src="../static/pictures/logo-removebg-preview.png" alt="Logo"></a></div>
-    <nav class="top-nav">
-        <ul>
-            <li><a href="#top" class="active">Home</a></li>
-            <li><a href="#ønsker">Ønsker</a></li>
-            <li><a href="#ønskeliste">Ønskeliste</a></li>
-            <li><a href="#login">Login</a></li>
-            </li>
-        </ul>
-        </ul>
-    </nav>
+<header th:replace="fragments/fragment :: topnav">
+
 </header>
-<div class="trustpilot"><a href="https://r.mtdv.me/OsKBZZ4DYz"> <img src="../static/pictures/trustpilot.png" alt="Trustpilot 5/5"> </a></div>
+<div class="trustpilot"><a th:href="@{/https://r.mtdv.me/OsKBZZ4DYz}" href="https://r.mtdv.me/OsKBZZ4DYz"> <img th:src="@{../pictures/trustpilot.png}" src="../static/pictures/trustpilot.png" alt="Trustpilot 5/5"> </a></div>
 </body>
 </html>
