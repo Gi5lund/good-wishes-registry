@@ -211,7 +211,7 @@ public class WishlistRepository
 				System.out.println("Could not delete item");
 			}
 		}
-		public List<WishList> getWishList() {
+		public List<WishList> getWishListByUserId() {
 			List<WishList> wishListe = new ArrayList<>();
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
@@ -236,14 +236,12 @@ public class WishlistRepository
 		public void addWishList(WishList wishlist){
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list(wish_list_id, wish_list_name, occation, user_id) VALUES(?,?,?,?) ";
+				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation) VALUES(?,?) ";
 				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
 				//set attributes in prepared statement
-				preparedStatement.setInt(1, wishlist.getWishListId());
 				preparedStatement.setString(2, wishlist.getWishListName());
 				preparedStatement.setString(3, wishlist.getOccation());
-				preparedStatement.setInt(4,wishlist.getUserId());
 				//execute
 				preparedStatement.executeUpdate();
 			}
