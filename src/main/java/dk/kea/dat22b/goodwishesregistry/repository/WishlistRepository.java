@@ -240,8 +240,8 @@ public class WishlistRepository
 				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
 				//set attributes in prepared statement
-				preparedStatement.setString(2, wishlist.getWishListName());
-				preparedStatement.setString(3, wishlist.getOccation());
+				preparedStatement.setString(1, wishlist.getWishListName());
+				preparedStatement.setString(2, wishlist.getOccation());
 				//execute
 				preparedStatement.executeUpdate();
 			}
