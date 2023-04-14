@@ -264,7 +264,6 @@ public class WishlistRepository
 
 				preparedStatement.setString(1,wish_list_name);
 				preparedStatement.setString(2, occation);
-				preparedStatement.setInt(3 ,wish_list_id);
 
 				preparedStatement.executeUpdate();
 			}
