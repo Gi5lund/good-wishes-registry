@@ -52,9 +52,12 @@ public class WishlistRepository
 			WishUser user =new WishUser();
 			try{
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
-				Statement statement=connection.createStatement();
-				final String SQL_USER="SELECT * FROM wishlist.wish_user WHERE"+userId+"= user_id";
-				ResultSet resultSet=statement.executeQuery(SQL_USER);
+
+				final String SQL_USER="SELECT * FROM wishlist.wish_user WHERE user_id=?";
+				PreparedStatement preparedStatement=connection.prepareStatement(SQL_USER);
+				preparedStatement.setInt(1,userId);
+
+				ResultSet resultSet=preparedStatement.executeQuery(SQL_USER);
 				while (resultSet.next()){
 					int user_Id=resultSet.getInt(1);
 					String userName=resultSet.getString(2);
@@ -70,13 +73,16 @@ public class WishlistRepository
 			}
 			return user;
 		}
-		public WishUser loginUser(String username,String userpassword){
+		public WishUser loginUser(WishUser wishUser,String username,String userpassword){
 			WishUser user=new WishUser();
 			try {
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
 				Statement statement=connection.createStatement();
-				final String SQL_LOGIN="SELECT * FROM wishlist.wish_user WHERE user_name="+username+" AND user_password="+userpassword;
-				ResultSet resultSet=statement.executeQuery(SQL_LOGIN);
+				final String SQL_LOGIN="SELECT * FROM wishlist.wish_user WHERE user_name=? AND  user_password =?";
+				PreparedStatement preparedStatement=connection.prepareStatement(SQL_LOGIN);
+				preparedStatement.setString(1,username);
+				preparedStatement.setString(2,userpassword);
+				ResultSet resultSet=preparedStatement.executeQuery();
 				while (resultSet.next()){
 					int user_Id=resultSet.getInt(1);
 					String userName=resultSet.getString(2);
