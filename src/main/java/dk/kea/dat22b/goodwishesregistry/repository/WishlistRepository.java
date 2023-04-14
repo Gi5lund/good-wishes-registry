@@ -20,12 +20,14 @@ public class WishlistRepository
 		private String PWD;
 
 		public List<WishListItems> getWishItemsByID(int wishlistid){
-			List<WishListItems> wishlistitems=new ArrayList<>();
+			List<WishListItems> wishListItems = new ArrayList<>();
 			try {
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
 				Statement statement=connection.createStatement();
-				final String SQLgetwishes="SELECT * FROM wishlist.wish_list_items WHERE"+ wishlistid+"=wish_list_id";
-				ResultSet resultSet=statement.executeQuery(SQLgetwishes);
+
+				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id = ?";
+				ResultSet resultSet=statement.executeQuery(SQL_GETWISHES);
+
 				while (resultSet.next()){
 				int wishListId=resultSet.getInt(1);
 				int itemLineId=resultSet.getInt(2);
@@ -36,18 +38,17 @@ public class WishlistRepository
 				double itemPrice=resultSet.getDouble(7);
 				boolean itemReserved=resultSet.getBoolean(8);
 				String itemReservedBy=resultSet.getString(9);
+
 				WishListItems wish =new WishListItems(wishListId,itemLineId,itemName,itemQTY,itemDescription,itemURL,itemPrice,itemReserved,itemReservedBy);
-				wishlistitems.add(wish);
+				wishListItems.add(wish);
 				}
-
-
 			}catch(SQLException e){
 				System.out.println("could not query database");
 				e.printStackTrace();
-
 			}
-			return wishlistitems;
+			return wishListItems;
 		}
+
 		public WishUser getUserById(int userId){
 			WishUser user =new WishUser();
 			try{
