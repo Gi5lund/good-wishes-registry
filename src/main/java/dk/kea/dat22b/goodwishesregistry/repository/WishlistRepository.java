@@ -70,7 +70,7 @@ public class WishlistRepository
 			}
 			return user;
 		}
-		public WishUser loginUser(String username,String userpassword){
+		public WishUser loginUser(WishUser wishUser,String username,String userpassword){
 			WishUser user=new WishUser();
 			try {
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
