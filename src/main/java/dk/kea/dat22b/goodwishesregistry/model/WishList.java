@@ -19,7 +19,7 @@ public class WishList {
         this.wishListName = wishListName;
         this.occation = occation;
     }
-    public WishList(int wishListId, int userId, String wishListName, String occation) {
+    public WishList(int wishListId,String wishListName, String occation, int userId) {
         this.wishListId = wishListId;
         this.userId = userId;
         this.wishListName = wishListName;
