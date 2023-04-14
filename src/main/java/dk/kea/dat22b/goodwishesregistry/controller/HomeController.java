@@ -32,7 +32,7 @@ public class HomeController
 			return "createwish";
 		}
 
-		@PostMapping("/createwish"/ {wishListId})
+		@PostMapping("/createwish"/)
 		public String createWish(@RequestParam("wishListId") int newWishListId,
 								 @RequestParam("itemLineId") int newItemLineId,
 								 @RequestParam("itemName") String newItemName,
