@@ -123,7 +123,7 @@ public class WishlistRepository
 					int wish_list_id = resultSet.getInt(1);
 					String wish_list_name = resultSet.getString(2);
 					String wish_list_occation = resultSet.getString(3);
-					int user_id = resultSet.getInt(4);
+					int user_id = userId;
 					WishList wishlist = new WishList(wish_list_id, wish_list_name, wish_list_occation, user_id);
 					wishListe.add(wishlist);
 				}
