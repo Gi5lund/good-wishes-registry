@@ -143,7 +143,7 @@ public class WishlistRepository
 		public void addWishList(WishList wishlist){
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation) VALUES(?,?) ";
+				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation,) VALUES(?,?) ";
 				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
 				//set attributes in prepared statement
@@ -228,7 +228,7 @@ public class WishlistRepository
 
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price) VALUES(?,?,?,?,?,?,?)";
+				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price, itemReserved, itemReservedBy) VALUES(?,?,?,?,?,?,?,?,?)";
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
 				preparedStatement.setInt(1, wishListItems.getWishListId());
@@ -238,6 +238,8 @@ public class WishlistRepository
 				preparedStatement.setString(5, wishListItems.getItemDescription());
 				preparedStatement.setString(6, wishListItems.getItemURL());
 				preparedStatement.setDouble(7, wishListItems.getItemPrice());
+				preparedStatement.setBoolean(8,wishListItems.isItemReserved());
+				preparedStatement.setString(9,wishListItems.getItemReservedBy());
 
 				preparedStatement.executeUpdate();
 
