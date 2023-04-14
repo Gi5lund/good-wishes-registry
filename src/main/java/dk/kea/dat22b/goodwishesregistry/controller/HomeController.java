@@ -1,5 +1,6 @@
 package dk.kea.dat22b.goodwishesregistry.controller;
 
+import dk.kea.dat22b.goodwishesregistry.model.WishList;
 import dk.kea.dat22b.goodwishesregistry.model.WishListItems;
 import dk.kea.dat22b.goodwishesregistry.model.WishUser;
 import dk.kea.dat22b.goodwishesregistry.repository.WishlistRepository;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class HomeController
@@ -130,7 +133,7 @@ public class HomeController
 			session.setAttribute("loginStatus",loginstatus);
 			wishUserModel.addAttribute("username",user.getUserName());
 
-			return "/show_user_page";
+			return "show-user-page";
 		}
 		@GetMapping("/jacob")
 		public String login(){
@@ -149,10 +152,30 @@ public class HomeController
 		public String showAddUser(){
 			return "/adduser";
 		}
-		@GetMapping("/show_user_page")
-		public String userPage(HttpSession session,Model wishUserModel, Model wishListModel){
-			int userid= (int) session.getAttribute("UserID");
-			wishListModel.addAttribute("wishlists",wishlistRepository.getWishListByUserId(userid));
-			return "/show_user_page";
-		}
+//		@GetMapping("/show_user_page")
+//		public String userPage(HttpSession session,Model wishListModel){
+//			WishList wl=wishlistRepository.findWishListById()
+//			int userid= (int) session.getAttribute("UserID");
+//			WishUser user=wishlistRepository.getUserById(userid);
+//			List<WishList> wishListList=new ArrayList<>();
+//			wishListList=wishlistRepository.getWishListByUserId(userid);
+//
+//				user.setWishLists(wishListList);
+//				session.setAttribute("wishlists",wishListList);
+//
+//			wishListModel.addAttribute("wishlists",wishListList);
+//			return "/show_user_page";
+//		}
+		@GetMapping("/show-user-page")
+		public String userPage(Model wishListModel){
+			int userid=1;
+			List<WishList> wl=wishlistRepository.getWishListByUserId(userid);
+//			List<WishList> wishListList=new ArrayList<>();
+//			wishListList=wishlistRepository.getWishListByUserId(userid);
+//
+//			user.setWishLists(wishListList);
+//			session.setAttribute("wishlists",wishListList);
+
+			wishListModel.addAttribute("wishlists",wl);
+			return "show-user-page";}
 	}

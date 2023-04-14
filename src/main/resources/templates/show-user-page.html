@@ -27,10 +27,10 @@
 
     </thead>
     <tbody>
-    <tr th:each="wishlist : ${wishlists}"</tr>
-    <td th:text="${wishlist.getWishlistName()}"> </td>
-    <td th:text="${wishlist.getOccation()}"></td>
-    <td th:text=""
+    <tr th:each="wishlist : ${wishlists}"></tr>
+    <td th:text="${wishlists.wishListName}"> </td>
+    <td th:text="${wishlists.occation}"></td>
+    <td> <a  href="#ønskelisteID"> Se ønskeliste</a>  </td>
 
     </tbody>
 

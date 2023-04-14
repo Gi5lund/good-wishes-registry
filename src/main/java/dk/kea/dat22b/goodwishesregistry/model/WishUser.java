@@ -1,10 +1,13 @@
 package dk.kea.dat22b.goodwishesregistry.model;
 
+import java.util.List;
+
 public class WishUser {
 
     private int userId;
     private String userName;
     private String UserPassword;
+    private List<WishList> wishLists;
 
     public WishUser() {
     }
@@ -38,6 +41,16 @@ public class WishUser {
     public void setUserPassword(String userPassword) {
         UserPassword = userPassword;
     }
+
+    public List<WishList> getWishLists()
+        {
+            return wishLists;
+        }
+
+    public void setWishLists(List<WishList> wishLists)
+        {
+            this.wishLists = wishLists;
+        }
 
     @Override
     public String toString() {
