@@ -263,7 +263,7 @@ public class WishlistRepository
 				int wish_list_id = wishlist.getWishListId();
 
 				preparedStatement.setString(1,wish_list_name);
-				preparedStatement.setString(2, wishlist.getOccation());
+				preparedStatement.setString(2, occation);
 				preparedStatement.setInt(3 ,wish_list_id);
 
 				preparedStatement.executeUpdate();
@@ -299,5 +299,22 @@ public class WishlistRepository
 			}
 			return wishlist;
 		}
-		//TODO DeleteWishList
+
+		public void deleteWishListId(int wish_list_id){
+
+			final String DELETE_QUERY = "DELETE FROM wishlist.wish_list WHERE wish_list_id = ?";
+			try {
+				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
+
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY);
+
+				preparedStatement.setInt(1, wish_list_id);
+
+				preparedStatement.executeUpdate();
+			}
+			catch(SQLException e) {
+				System.out.println("Could not delete wishlist");
+				e.printStackTrace();
+			}
+		}
 	}
