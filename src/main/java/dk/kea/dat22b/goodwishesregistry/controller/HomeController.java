@@ -97,15 +97,29 @@ public class HomeController
 			return "redirect:wishlist";
 		}
 
+		@GetMapping("/login")
+		public String showLogin(HttpSession session,Model wishUserModel){
+			WishUser user=(WishUser) session.getAttribute("User");
+			if(user==null){
+				user=new WishUser();
+			}
+			session.setAttribute("User",user);
+
+			return "/login";
+		}
 
 		@PostMapping("/login")
-		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session ){
-			WishUser user=wishlistRepository.loginUser(username,password);
+		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session,Model wishUserModel ){
+			WishUser user=(WishUser) session.getAttribute("User");
+			user=wishlistRepository.loginUser(user,username,password);
+			// the portion below should check if user exist, but may be faulty - or maybe azure isn't running
 			if (user.getUserName()==null){
 				return "login";
 			}
 			session.setAttribute("UserID",user.getUserId());
 			session.setAttribute("UserName",user.getUserName());
+			wishUserModel.addAttribute("username",user.getUserName());
+
 			return "/show_user_page";
 		}
 		@GetMapping("/jacob")
@@ -120,12 +134,14 @@ public class HomeController
 			wishlistRepository.addUser(newUser);
 			return "redirect:jacob";
 		}
-		@GetMapping("/login")
-		public String showLogin(){
-			return "/login";
-		}
+
 		@GetMapping("/adduser")
 		public String showAddUser(){
 			return "/adduser";
+		}
+		@GetMapping("/show_user_page")
+		public String userPage(HttpSession session,Model wishUserModel){
+
+			return "/show_user_page";
 		}
 	}
