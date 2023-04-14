@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
+</head>
+<header th:fragment="topnav">
+
+        <div class="logo"><a th:href="@{/jacob.html}" href="/jacob.html"> <img th:src="@{../pictures/logo-removebg-preview.png}" src="../static/pictures/logo-removebg-preview.png" alt="Logo"></a></div>
+        <nav class="top-nav">
+            <ul>
+                <li><a th:href="@{/index}" href="/index" class="active">Hjem</a></li>
+                <li><a href="#ønsker">Ønsker</a></li>
+                <li><a href="#ønskeliste">Ønskeliste</a></li>
+                <li><a th:href="@{/login}" href="/login">Login</a></li>
+                </li>
+            </ul>
+            </ul>
+        </nav>
+
+
+</header>
+<body>
+
+</body>
+</html>
