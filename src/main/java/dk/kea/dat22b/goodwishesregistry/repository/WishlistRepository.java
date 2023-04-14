@@ -144,7 +144,7 @@ public class WishlistRepository
 		public void addWishList(WishList wishlist){
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation,) VALUES(?,?) ";
+				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation) VALUES(?,?) ";
 				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
 				//set attributes in prepared statement
@@ -229,7 +229,7 @@ public class WishlistRepository
 
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price, itemReserved, itemReservedBy) VALUES(?,?,?,?,?,?,?,?,?)";
+				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price, item_reserved, item_reserved_by) VALUES(?,?,?,?,?,?,?,?,?)";
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
 				preparedStatement.setInt(1, wishListItems.getWishListId());
