@@ -32,7 +32,7 @@ public class HomeController
 			return "createwish";
 		}
 
-		@PostMapping("/createwish"/)
+		@PostMapping("/createwish")
 		public String createWish(@RequestParam("wishListId") int newWishListId,
 								 @RequestParam("itemLineId") int newItemLineId,
 								 @RequestParam("itemName") String newItemName,
@@ -100,10 +100,15 @@ public class HomeController
 		@GetMapping("/login")
 		public String showLogin(HttpSession session,Model wishUserModel){
 			WishUser user=(WishUser) session.getAttribute("User");
+			String loginstatus="";
+			if(session.getAttribute("loginStatus")==null){
+				session.setAttribute("loginStatus",loginstatus);
+			}
 			if(user==null){
 				user=new WishUser();
 			}
 			session.setAttribute("User",user);
+			session.setAttribute("loginStatus",loginstatus);
 
 			return "/login";
 		}
@@ -111,13 +116,18 @@ public class HomeController
 		@PostMapping("/login")
 		public String login(@RequestParam("username") String username, @RequestParam("pwd") String password,HttpSession session,Model wishUserModel ){
 			WishUser user=(WishUser) session.getAttribute("User");
+			String loginstatus="";
 			user=wishlistRepository.loginUser(user,username,password);
 			// the portion below should check if user exist, but may be faulty - or maybe azure isn't running
 			if (user.getUserName()==null){
+				loginstatus="fail";
+				session.setAttribute("loginStatus",loginstatus);
 				return "login";
 			}
+			loginstatus="succes";
 			session.setAttribute("UserID",user.getUserId());
 			session.setAttribute("UserName",user.getUserName());
+			session.setAttribute("loginStatus",loginstatus);
 			wishUserModel.addAttribute("username",user.getUserName());
 
 			return "/show_user_page";
@@ -140,8 +150,9 @@ public class HomeController
 			return "/adduser";
 		}
 		@GetMapping("/show_user_page")
-		public String userPage(HttpSession session,Model wishUserModel){
-
+		public String userPage(HttpSession session,Model wishUserModel, Model wishListModel){
+			int userid= (int) session.getAttribute("UserID");
+			wishListModel.addAttribute("wishlists",wishlistRepository.getWishListByUserId(userid));
 			return "/show_user_page";
 		}
 	}
