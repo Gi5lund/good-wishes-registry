@@ -27,6 +27,13 @@ public class HomeController
 			return "index";
 		}
 
+
+		@GetMapping("/showwishes")
+		public String showWishes(Model modelWish, int wishListsId){
+			modelWish.addAttribute("showWishes", wishlistRepository.getWishItemsByID(wishListsId));
+			return "showwishes";
+		}
+
 		@GetMapping("/createwish")
 		public String showCreateWish(){
 			return "createwish";
@@ -37,7 +44,7 @@ public class HomeController
 								 @RequestParam("itemLineId") int newItemLineId,
 								 @RequestParam("itemName") String newItemName,
 								 @RequestParam("itemQTY") int newItemQTY,
-								 @RequestParam("itemDescreption") String newItemDescreption,
+								 @RequestParam("newItemDescription") String newItemDescription,
 								 @RequestParam("itemURL") String newItemURL,
 								 @RequestParam("itemPrice") double newItemPrice) {
 			//Laver nyt ønske
@@ -46,7 +53,7 @@ public class HomeController
 			newWish.setItemLineId(newItemLineId);
 			newWish.setItemName(newItemName);
 			newWish.setItemQTY(newItemQTY);
-			newWish.setItemDescription(newItemDescreption);
+			newWish.setItemDescription(newItemDescription);
 			newWish.setItemURL(newItemURL);
 			newWish.setItemPrice(newItemPrice);
 			newWish.setItemReserved(false);
@@ -55,17 +62,20 @@ public class HomeController
 			//Gem nyt ønske
 			wishlistRepository.addWish(newWish);
 
-			return "redirect:/";
+			return "redirect:showwishes";
 
 		}
 
-		@GetMapping("/updatewish/{itemListId}")
+		@GetMapping("/updatewish/{itemLineId}")
 		public String showUpdateWish(@PathVariable("itemLineId") int updateWish, Model model){
 
+			//Find ønske med itemLineId lig update itemLineId i databasen
 			WishListItems updateWishListItems = wishlistRepository.findWishById(updateWish);
 
+			//Tilføj ønske til viewmodel, så det kan bruges i thymeleaf
 			model.addAttribute("wishListItem", updateWishListItems);
 
+			//Fortæl Spring hvilken HTML-side der skal vises.
 			return "updatewish";
 		}
 
@@ -85,16 +95,16 @@ public class HomeController
 
 			wishlistRepository.updateWish(updateWishItem);
 
-			return "/redirect:wishlist";
+			return "/redirect: showwishes";
 		}
 
-		@GetMapping("/delete/{itemLineId}")
+		@GetMapping("/deletewish/{itemLineId}")
 		public String deleteWish(@PathVariable("itemLineId") int deleteWish){
 			//slet fra repository
 			wishlistRepository.deleteById(deleteWish);
 
 			//returner til index-siden
-			return "redirect:wishlist";
+			return "redirect:showwishes";
 		}
 
 		@GetMapping("/login")

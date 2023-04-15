@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wishes</title>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1>Ønskeliste</h1>
+    </div>
+    <div>
+        <ul>
+            <li><a  th:href="@{/create}" href="/createwish.html">Opret nyt ønske</a></li>
+        </ul>
+    </div>
+    <table>
+        <thead>
+        <th>Ønskeliste id</th>
+        <th>Ønske id</th>
+        <th>Navn</th>
+        <th>Antal</th>
+        <th>Beskrivelse</th>
+        <th>Link</th>
+        <th>Pris</th>
+        </thead>
+
+        <tbody>
+        <tr th:each="wishItems : ${showWishes}">
+            <td th:text="${wishItems.wishListId}"></td>
+            <td th:text="${wishItems.itemLineId}"></td>
+            <td th:text="${wishItems.itemName}"></td>
+            <td th:text="${wishItems.itemQTY}"></td>
+            <td th:text="${wishItems.itemDescription}"></td>
+            <td th:text="${wishItems.itemURL}"></td>
+            <td th:text="${wishItems.itemPrice}"></td>
+            <td>
+                <a th:href="@{'/updatewish/' + ${wishItems.itemLineId}}" href="/updatewish">Opdater ønske</a>
+            </td>
+            <td>
+                <a th:href="@{'/deletewish/' + ${wishItems.itemLineId}}" href="/deletewish">Slet ønske</a>
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+</body>
+</html>

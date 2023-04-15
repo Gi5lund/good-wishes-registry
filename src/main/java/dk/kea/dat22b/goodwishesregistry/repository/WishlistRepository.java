@@ -19,13 +19,13 @@ public class WishlistRepository
 		@Value("${spring.datasource.password}")
 		private String PWD;
 
-		public List<WishListItems> getWishItemsByID(int wishlistid){
+		public List<WishListItems> getWishItemsByID(int wishListsId){
 			List<WishListItems> wishListItems = new ArrayList<>();
 			try {
-				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
-				Statement statement=connection.createStatement();
+				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
+				Statement statement = connection.createStatement();
 
-				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id = ?";
+				final String SQL_GETWISHES = "SELECT * FROM wishlist.wish_list_items WHERE wish_list_id = ?";
 				ResultSet resultSet=statement.executeQuery(SQL_GETWISHES);
 
 				while (resultSet.next()){
@@ -39,7 +39,7 @@ public class WishlistRepository
 				boolean itemReserved=resultSet.getBoolean(8);
 				String itemReservedBy=resultSet.getString(9);
 
-				WishListItems wish =new WishListItems(wishListId,itemLineId,itemName,itemQTY,itemDescription,itemURL,itemPrice,itemReserved,itemReservedBy);
+				WishListItems wish = new WishListItems(wishListId,itemLineId,itemName,itemQTY,itemDescription,itemURL,itemPrice,itemReserved,itemReservedBy);
 				wishListItems.add(wish);
 				}
 			}catch(SQLException e){
