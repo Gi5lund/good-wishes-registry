@@ -25,7 +25,7 @@ public class WishlistRepository
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
 				Statement statement=connection.createStatement();
 
-				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id = ?";
+				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id ="+wishlistid;
 				ResultSet resultSet=statement.executeQuery(SQL_GETWISHES);
 
 				while (resultSet.next()){
@@ -142,15 +142,16 @@ public class WishlistRepository
 			}
 			return wishListe;
 		}
-		public void addWishList(WishList wishlist){
+		public void addWishList(WishList wishlist, int userID){
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation) VALUES(?,?) ";
+				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation,user_id) VALUES(?,?,?) ";
 				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
 				//set attributes in prepared statement
 				preparedStatement.setString(1, wishlist.getWishListName());
 				preparedStatement.setString(2, wishlist.getOccation());
+				preparedStatement.setInt(3,userID);
 				//execute
 				preparedStatement.executeUpdate();
 			}

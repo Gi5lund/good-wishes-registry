@@ -22,7 +22,7 @@
         Begivenhed
     </th>
     <th>
-
+        <a th:href="@{/create-wishlist}" href="/create-wishlist">Opret ny ønskeliste</a>
     </th>
 
     </thead>
@@ -30,7 +30,7 @@
     <tr th:each="wishlist : ${wishlists}">
     <td th:text="${wishlist.getWishListName()}"> </td>
     <td th:text="${wishlist.getOccation()}"></td>
-    <td> <a  href="#ønskelisteID"> Se ønskeliste</a>  </td>
+    <td> <a  th:href="@{'/wishlists/'+${wishlist.getWishListId()}}" href="/wishlists"> Se ønskeliste</a>  </td>
     </tr>
     </tbody>
 

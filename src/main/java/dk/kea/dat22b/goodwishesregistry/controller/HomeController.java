@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Controller
@@ -99,7 +99,7 @@ public class HomeController
 
 				wishlistRepository.updateWish(updateWishItem);
 
-				return "/redirect:wishlist";
+				return "redirect:/wishlist";
 			}
 
 		@GetMapping("/delete/{itemLineId}")
@@ -176,6 +176,11 @@ public class HomeController
 				return "/show-user-page";
 			}
 
+			@GetMapping("/create-wishlist")
+			public String createWishlist(){
+
+			return "create-wishlist";
+			}
 
 		@PostMapping("/adduser")
 		public String createUser(@RequestParam("userName") String userName, @RequestParam("userPassword") String userPassword)
