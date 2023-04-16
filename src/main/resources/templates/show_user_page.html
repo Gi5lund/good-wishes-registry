@@ -27,11 +27,11 @@
 
     </thead>
     <tbody>
-    <tr th:each="wishlist : ${wishlists}"</tr>
-    <td th:text="${wishlist.getWishlistName()}"> </td>
+    <tr th:each="wishlist : ${wishlists}">
+    <td th:text="${wishlist.getWishListName()}"> </td>
     <td th:text="${wishlist.getOccation()}"></td>
-    <td th:text=""
-
+    <td th:text=""></td>
+    </tr>
     </tbody>
 
 </table>
