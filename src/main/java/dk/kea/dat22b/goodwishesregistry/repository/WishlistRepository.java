@@ -123,11 +123,10 @@ public class WishlistRepository
 			List<WishList> wishListe = new ArrayList<>();
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
+				Statement statement=connection.createStatement();
+				final String SQL_QUERY = "SELECT * FROM wishlist.wish_list WHERE user_id ="+userId;
 
-				final String SQL_QUERY = "SELECT * FROM wishlist.wish_list WHERE user_id = ?";
-				PreparedStatement preparedStatement=connection.prepareStatement(SQL_QUERY);
-				preparedStatement.setInt(1,userId);
-				ResultSet resultSet = preparedStatement.executeQuery(SQL_QUERY);
+				ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 				while(resultSet.next()) {
 					int wish_list_id = resultSet.getInt(1);
 					String wish_list_name = resultSet.getString(2);
@@ -184,7 +183,7 @@ public class WishlistRepository
 		}
 		public WishList findWishListById(int id){
 
-			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?";
+			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?;";
 			WishList wishlist = new WishList();
 			wishlist.setWishListId(id);
 			try{
