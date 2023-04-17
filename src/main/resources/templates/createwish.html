@@ -2,20 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create wish</title>
+    <title>Opret ønske</title>
     <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
     <link rel="stylesheet" th:href="@{../css/wishlistitems.css}" href="../static/css/wishlistitems.css">
 </head>
-<header th:replace="fragments/fragment :: topnav">
-
-</header>
+    <header th:replace="fragments/fragment :: topnav">
+    </header>
 <body>
-<div class="text">
-<h1>Opret nyt ønske</h1>
-</div>
-<div class="containerCreate">
-    <table>
-
+    <div class="text">
+        <h1>Opret nyt ønske</h1>
+    </div>
         <form action="createwish" method="post">
             <div class="page">
 <!--
@@ -70,8 +66,6 @@
                     <input class="submit" type="submit" value="Tilføj ønske"><br>
             </div>
         </form>
-    </table>
 
-</div>
 </body>
 </html>

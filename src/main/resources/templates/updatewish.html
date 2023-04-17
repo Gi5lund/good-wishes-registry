@@ -6,15 +6,12 @@
     <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
     <link rel="stylesheet" th:href="@{../css/wishlistitems.css}" href="../static/css/wishlistitems.css">
 </head>
-<header th:replace="fragments/fragment :: topnav">
-
-</header>
+    <header th:replace="fragments/fragment :: topnav">
+    </header>
 <body>
-<div class="text">
-  <h1>Opdater ønske</h1>
-</div>
-
-  <table>
+    <div class="text">
+        <h1>Opdater ønske</h1>
+    </div>
     <form action="/updatewish" method="post">
       <div class="page">
 <!--
@@ -62,13 +59,12 @@
         </div>
 <!--
           <input id="itemReserved-field" name="itemReserved" type="hidden" th:value="${wishListItems.itemReserved}"><br>
-
           <input id="itemReservedBy-field" name="itemReservedBy" type="hidden" th:value="${wishListItems.itemReservedBy}"><br>
 -->
 
           <input class="submit" type="submit" value="Opdater ønske"><br>
       </div>
     </form>
-  </table>
+
 </body>
 </html>
