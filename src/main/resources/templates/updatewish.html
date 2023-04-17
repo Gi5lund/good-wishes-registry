@@ -3,34 +3,72 @@
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>Opdater ønske</title>
+    <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
+    <link rel="stylesheet" th:href="@{../css/wishlistitems.css}" href="../static/css/wishlistitems.css">
 </head>
+<header th:replace="fragments/fragment :: topnav">
+
+</header>
 <body>
-<form action="/updatewish" method="post">
-  <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItems.wishListId}"><br>
+<div class="text">
+  <h1>Opdater ønske</h1>
+</div>
 
-  <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItems.itemLineId}"><br>
+  <table>
+    <form action="/updatewish" method="post">
+      <div class="page">
+<!--
+          <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItems.wishListId}"><br>
+          <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItems.itemLineId}"><br>
+-->
+        <div class="field field_v1">
+          <label for="ItemName-field" class="ha-screen-reader">Navn på ønsket</label>
+          <input id="itemName-field" class="field__input" placeholder=" e.g. Tøj" name="itemName" type="text" th:value="${wishListItems.itemName}"><br>
+          <span class="field__label-wrap" aria-hidden="true">
+          <span class="field__label">Navn på ønske</span>
+          </span>
+        </div>
 
-  <label for="ItemName-field">Navn på ønsket:</label>
-  <input id="itemName-field" name="itemName" type="text" th:value="${wishListItems.itemName}"><br>
+        <div class="field field_v1">
+          <label for="itemQTY-field" class="ha-screen-reader">Antal</label>
+          <input id="itemQTY-field" class="field__input" placeholder=" e.g. 3" name="itemQTY" type="text" th:value="${wishListItems.itemQTY}"><br>
+          <span class="field__label-wrap" aria-hidden="true">
+          <span class="field__label">Antal</span>
+          </span>
+        </div>
 
-  <label for="itemQTY-field">Antal:</label>
-  <input id="itemQTY-field" name="itemQTY" type="text" th:value="${wishListItems.itemQTY}"><br>
+        <div class="field field_v1">
+          <label for="itemDescreption-field" class="ha-screen-reader">Beskrivelse</label>
+          <input id="itemDescreption-field" class="field__input" placeholder=" e.g. størrelse, farve etc" name="itemDescreption" type="text" th:value="${wishListItems.itemDescreption}"><br>
+          <span class="field__label-wrap" aria-hidden="true">
+          <span class="field__label">Beskrivelse</span>
+          </span>
+        </div>
 
-  <label for="itemDescreption-field">Beskrivelse:</label>
-  <input id="itemDescreption-field" name="itemDescreption" type="text" th:value="${wishListItems.itemDescreption}"><br>
+        <div class="field field_v1">
+          <label for="itemURL-field" class="ha-screen-reader">Indsæt link</label>
+          <input id="itemURL-field" class="field__input" placeholder=" e.g. https://www.magasin.dk/?gclid=CjwKCAjw3POhBhBQEiwAqTCuBmIZ9SX523rE7OUQXyvcYT3ecEXImLS48OOiPNx1DKZyC7E6NurKaRoCbHEQAvD_BwE" name="itemURL" type="text" th:value="${wishListItems.itemURL}"><br>
+          <span class="field__label-wrap" aria-hidden="true">
+          <span class="field__label">Indsæt link</span>
+          </span>
+        </div>
 
-  <label for="itemURL-field">Indsæt link:</label>
-  <input id="itemURL-field" name="itemURL" type="text" th:value="${wishListItems.itemURL}"><br>
+        <div class="field field_v1">
+          <label for="itemPrice-field" class="ha-screen-reader">Pris</label>
+          <input id="itemPrice-field" class="field__input" placeholder=" e.g. 100" name="itemPrice" type="text" th:value="${wishListItems.itemPrice}"><br>
+          <span class="field__label-wrap" aria-hidden="true">
+          <span class="field__label">Pris</span>
+          </span>
+        </div>
+<!--
+          <input id="itemReserved-field" name="itemReserved" type="hidden" th:value="${wishListItems.itemReserved}"><br>
 
-  <label for="itemPrice-field">Pris:</label>
-  <input id="itemPrice-field" name="itemPrice" type="text" th:value="${wishListItems.itemPrice}"><br>
+          <input id="itemReservedBy-field" name="itemReservedBy" type="hidden" th:value="${wishListItems.itemReservedBy}"><br>
+-->
 
-  <input id="itemReserved-field" name="itemReserved" type="hidden" th:value="${wishListItems.itemReserved}"><br>
-
-  <input id="itemReservedBy-field" name="itemReservedBy" type="hidden" th:value="${wishListItems.itemReservedBy}"><br>
-
-  <input type="submit" value="Opdater ønske"><br>
-
-</form>
+          <input class="submit" type="submit" value="Opdater ønske"><br>
+      </div>
+    </form>
+  </table>
 </body>
 </html>

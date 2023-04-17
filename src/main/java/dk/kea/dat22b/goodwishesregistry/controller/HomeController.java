@@ -1,5 +1,6 @@
 package dk.kea.dat22b.goodwishesregistry.controller;
 
+import dk.kea.dat22b.goodwishesregistry.model.WishList;
 import dk.kea.dat22b.goodwishesregistry.model.WishListItems;
 import dk.kea.dat22b.goodwishesregistry.model.WishUser;
 import dk.kea.dat22b.goodwishesregistry.repository.WishlistRepository;
@@ -33,6 +34,7 @@ public class HomeController
 			modelWish.addAttribute("showWishes", wishlistRepository.getWishItemsByID(wishListsId));
 			return "showwishes";
 		}
+
 
 		@GetMapping("/createwish")
 		public String showCreateWish(){
