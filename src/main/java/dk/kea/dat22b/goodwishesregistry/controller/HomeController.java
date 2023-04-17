@@ -167,7 +167,7 @@ public class HomeController
 
 
 		@GetMapping("/show-user-page")
-		public String userPage(HttpSession session, Model wishUserModel,Model wishListModel)
+		public String userPage(HttpSession session, Model wishUserModel)
 			{
 				int userID=(int) session.getAttribute("UserID");
 				WishUser user=wishlistRepository.getUserById(userID);
@@ -198,9 +198,5 @@ public class HomeController
 				return "/adduser";
 			}
 
-		@GetMapping("/jacob")
-		public String login()
-			{
-				return "jacob";
-			}
+
 	}
