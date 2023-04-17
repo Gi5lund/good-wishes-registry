@@ -25,7 +25,7 @@ public class WishlistRepository
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
 				Statement statement=connection.createStatement();
 
-				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id = ?";
+				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id ="+wishlistid;
 				ResultSet resultSet=statement.executeQuery(SQL_GETWISHES);
 
 				while (resultSet.next()){
@@ -123,15 +123,16 @@ public class WishlistRepository
 			List<WishList> wishListe = new ArrayList<>();
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				Statement statement = connection.createStatement();
-				final String SQL_QUERY = "SELECT * FROM wishlist.wish_list WHERE user_id = ?";
+				Statement statement=connection.createStatement();
+				final String SQL_QUERY = "SELECT * FROM wishlist.wish_list WHERE user_id ="+userId;
+
 				ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 				while(resultSet.next()) {
 					int wish_list_id = resultSet.getInt(1);
 					String wish_list_name = resultSet.getString(2);
 					String wish_list_occation = resultSet.getString(3);
-					int user_id = userId;
-					WishList wishlist = new WishList(wish_list_id, wish_list_name, wish_list_occation, user_id);
+
+					WishList wishlist = new WishList(wish_list_id, wish_list_name, wish_list_occation, userId);
 					wishListe.add(wishlist);
 				}
 			}
@@ -141,15 +142,16 @@ public class WishlistRepository
 			}
 			return wishListe;
 		}
-		public void addWishList(WishList wishlist){
+		public void addWishList(WishList wishlist, int userID){
 			try{
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation) VALUES(?,?) ";
+				final String CREATE_QUERY = "INSERT INTO wishlist.wish_list( wish_list_name, occation,user_id) VALUES(?,?,?) ";
 				PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
 				//set attributes in prepared statement
 				preparedStatement.setString(1, wishlist.getWishListName());
 				preparedStatement.setString(2, wishlist.getOccation());
+				preparedStatement.setInt(3,userID);
 				//execute
 				preparedStatement.executeUpdate();
 			}
@@ -182,7 +184,7 @@ public class WishlistRepository
 		}
 		public WishList findWishListById(int id){
 
-			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?";
+			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?;";
 			WishList wishlist = new WishList();
 			wishlist.setWishListId(id);
 			try{
