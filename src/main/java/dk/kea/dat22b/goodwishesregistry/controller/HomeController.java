@@ -54,29 +54,29 @@ public class HomeController
 
 
 		@PostMapping("/createwish")
-		public String createWish( @RequestParam("itemLineId") int newItemLineId,
-								 @RequestParam("itemName") String newItemName,
+		public String createWish(@RequestParam("itemName") String newItemName,
 								 @RequestParam("itemQTY") int newItemQTY,
-								 @RequestParam("newItemDescription") String newItemDescription,
+								 @RequestParam("itemDescription") String newItemDescription,
 								 @RequestParam("itemURL") String newItemURL,
 								 @RequestParam("itemPrice") double newItemPrice,HttpSession session) {
-			//Laver nyt ønske
-			int newWishListId=(int) session.getAttribute("currentWishListId");
+			//Laver nyt ønske med autogenereret itemLineId
+			int newWishListId=(int) session.getAttribute("currentWishList");
 			WishListItems newWish = new WishListItems();
 			newWish.setWishListId(newWishListId);
-			newWish.setItemLineId(newItemLineId);
+			//newWish.setItemLineId(newItemLineId);
 			newWish.setItemName(newItemName);
 			newWish.setItemQTY(newItemQTY);
 			newWish.setItemDescription(newItemDescription);
 			newWish.setItemURL(newItemURL);
 			newWish.setItemPrice(newItemPrice);
-			newWish.setItemReserved(false);
-			newWish.setItemReservedBy("");
+			newWish.setItemReserved(false); // to be implemented later - default dummy-values to please constructor
+			newWish.setItemReservedBy(""); // to be implemented later - default dummy-values to please constructor
 
 			//Gem nyt ønske
 			wishlistRepository.addWish(newWish,newWishListId);
+			//fortæl hvilken wishlist side du skal tilbage til
 
-			return "redirect:showwishes";
+			return "redirect:showwishes/"+newWishListId; //bemærk at der IKKE er mellemrum eller / efter : !!!
 
 		}
 
@@ -90,6 +90,7 @@ public class HomeController
 			model.addAttribute("wishListItem", updateWishListItems);
 
 			//Fortæl Spring hvilken HTML-side der skal vises.
+
 			return "updatewish";
 		}
 
@@ -245,6 +246,8 @@ public class HomeController
 			{
 				return "/adduser";
 			}
+
+
 
 
 
