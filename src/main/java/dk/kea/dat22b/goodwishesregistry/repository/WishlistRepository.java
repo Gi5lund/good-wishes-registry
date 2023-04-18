@@ -19,11 +19,11 @@ public class WishlistRepository
 		@Value("${spring.datasource.password}")
 		private String PWD;
 
-		public List<WishListItems> getWishItemsByID(int wishlistid){
+		public List<WishListItems> getWishItemsByID(int wishListsId){
 			List<WishListItems> wishListItems = new ArrayList<>();
 			try {
-				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
-				Statement statement=connection.createStatement();
+				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
+				Statement statement = connection.createStatement();
 
 				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id ="+wishlistid;
 				ResultSet resultSet=statement.executeQuery(SQL_GETWISHES);
@@ -39,7 +39,7 @@ public class WishlistRepository
 				boolean itemReserved=resultSet.getBoolean(8);
 				String itemReservedBy=resultSet.getString(9);
 
-				WishListItems wish =new WishListItems(wishListId,itemLineId,itemName,itemQTY,itemDescription,itemURL,itemPrice,itemReserved,itemReservedBy);
+				WishListItems wish = new WishListItems(wishListId,itemLineId,itemName,itemQTY,itemDescription,itemURL,itemPrice,itemReserved,itemReservedBy);
 				wishListItems.add(wish);
 				}
 			}catch(SQLException e){
@@ -151,7 +151,6 @@ public class WishlistRepository
 				//set attributes in prepared statement
 				preparedStatement.setString(1, wishlist.getWishListName());
 				preparedStatement.setString(2, wishlist.getOccation());
-				preparedStatement.setInt(3,userID);
 				//execute
 				preparedStatement.executeUpdate();
 			}
@@ -184,7 +183,7 @@ public class WishlistRepository
 		}
 		public WishList findWishListById(int id){
 
-			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?;";
+			final String FIND_QUERY ="SELECT * FROM wishlist.wish_list WHERE wish_list_id = ?";
 			WishList wishlist = new WishList();
 			wishlist.setWishListId(id);
 			try{
