@@ -25,7 +25,7 @@ public class WishlistRepository
 				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
 				Statement statement = connection.createStatement();
 
-				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id ="+wishlistid;
+				final String SQL_GETWISHES ="SELECT * FROM wishlist.wish_list_items WHERE wish_list_id ="+ wishListsId;
 				ResultSet resultSet=statement.executeQuery(SQL_GETWISHES);
 
 				while (resultSet.next()){
