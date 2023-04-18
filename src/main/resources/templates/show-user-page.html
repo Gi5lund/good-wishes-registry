@@ -24,13 +24,14 @@
     <th>
         <a th:href="@{/create-wishlist}" href="/create-wishlist">Opret ny ønskeliste</a>
     </th>
-
     </thead>
     <tbody>
     <tr th:each="wishlist : ${wishlists}">
     <td th:text="${wishlist.getWishListName()}"> </td>
     <td th:text="${wishlist.getOccation()}"></td>
-    <td> <a  th:href="@{'/wishlists/'+${wishlist.getWishListId()}}" href="/wishlists"> Se ønskeliste</a>  </td>
+    <td> <a  th:href="@{'/showwishes/'+${wishlist.getWishListId()}}" href="/showwishes"> Se ønskeliste</a>  </td>
+        <td><a th:href="@{/'updatewishlist/'+${wishlist.getWishListId()}}" href="/updatewishlist">Opdater ønskeliste</a><a/></td>
+        <td><a th:href="@{/'deletewishlist/'+${wishlist.getWishListId()}}" href="/delete/">Slet ønskeliste</a></td>
     </tr>
     </tbody>
 
