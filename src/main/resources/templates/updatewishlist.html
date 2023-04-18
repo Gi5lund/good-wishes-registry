@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="update-wl-container">
+  <h1>Opdater ønskeliste</h1>
+    <form action="updatewishlist" method="post">
+
+      <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishlist.wishListId}" ><br>
+
+      <label for="WishListName-field">Navn på ønskeliste:</label>
+      <input id="WishListName-field" name="WishListName" type="text" th:value="${wishlist.wishListname}" ><br>
+
+      <label for="occation-field">Begivenhed:</label>
+      <input id="occation-field" name="occation" type="text" th:value="${wishlist.occation}" ><br>
+
+      <input id="userId-field" name="userId" type="hidden" th:value="${wishlist.UserId}" ><br>
+
+      <input type="submit" value="Opdater ønskeliste"><br>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create wish</title>
+</head>
+<body>
+<div class="create-wl-container">
+    <h1>Ny ønskeliste</h1>
+        <form action="createwishlist" method="post">
+
+            <input id="wishListId-field" name="wishListId" type="hidden"><br>
+
+            <label for="WishListName-field">Navn på ønskeliste:</label>
+            <input id="WishListName-field" name="WishListName" type="text"><br>
+
+            <label for="occation-field">Begivenhed:</label>
+            <input id="occation-field" name="occation" type="text"><br>
+
+            <input id="userId-field" name="userId" type="hidden"><br>
+
+            <input type="submit" value="Tilføj ønskeliste"><br>
+        </form>
+</div>
+</body>
+</html>

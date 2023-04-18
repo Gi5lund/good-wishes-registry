@@ -167,21 +167,60 @@ public class HomeController
 
 
 		@GetMapping("/show-user-page")
-		public String userPage(HttpSession session, Model wishUserModel)
-			{
+		public String userPage(HttpSession session, Model wishUserModel) {
 				int userID=(int) session.getAttribute("UserID");
 				WishUser user=wishlistRepository.getUserById(userID);
 				wishUserModel.addAttribute("wishlists",user.getWishLists());
 
 				return "/show-user-page";
-			}
+		}
+		@GetMapping("/createwishlist")
+		public String showCreateWishList(){
+			return "createwishlist";
+		}
+		@PostMapping("/create-wishlist")
+		public String createWishlist(@RequestParam("wishListId") int newWishListId,
+										 @RequestParam("WishListName") String newWishlistName,
+										 @RequestParam("occation") String newOccation,
+										 @RequestParam("userId") int newUserId){
 
-			@GetMapping("/create-wishlist")
-			public String createWishlist(){
+			WishList newWishList = new WishList();
+			newWishList.setWishListId(newWishListId);
+			newWishList.setWishListName(newWishlistName);
+			newWishList.setOccation(newOccation);
+			newWishList.setUserId(newUserId);
 
-			return "create-wishlist";
-			}
+			wishlistRepository.addWishList(newWishList,newUserId);
 
+			return "redirect:/show-user-page";
+		}
+		@GetMapping("/updatewishlist/{wishListId}")
+		public String showUpdateWishList(@PathVariable("wishListId") int updateWishlist, Model model)
+		{
+			WishList updateWishListe = wishlistRepository.findWishListById(updateWishlist);
+
+
+			model.addAttribute("wishList", updateWishListe);
+
+			return "updatewish";
+		}
+		@PostMapping("/updatewishlist")
+		public String updateWishList(@RequestParam("wishListId") int updateWishListId,
+									 @RequestParam("WishListName") String updateWishlistName,
+									 @RequestParam("occation") String updateOccation,
+									 @RequestParam("userId") int updateUserId){
+			WishList updatedWishList = new WishList(updateWishListId, updateWishlistName, updateOccation, updateUserId);
+
+			wishlistRepository.updateWishList(updatedWishList);
+			return "redirect:/show-user-page";
+		}
+		@GetMapping("/delete/{wishListId}")
+		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist) {
+
+			wishlistRepository.deleteWishListId(deleteWishlist);
+
+			return "redirect:/show-user-page";
+		}
 		@PostMapping("/adduser")
 		public String createUser(@RequestParam("userName") String userName, @RequestParam("userPassword") String userPassword)
 			{
