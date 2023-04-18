@@ -38,9 +38,10 @@ public class HomeController
 			}
 
 
-		@GetMapping("/showwishes")
-		public String showWishes(Model modelWish, int wishListsId){
+		@GetMapping("/showwishes/{wishlistid}")
+		public String showWishes(@PathVariable("wishlistid") int wishListsId,Model modelWish,HttpSession session){
 			modelWish.addAttribute("showWishes", wishlistRepository.getWishItemsByID(wishListsId));
+			session.setAttribute("currentWishList",wishListsId);
 			return "showwishes";
 		}
 
