@@ -223,7 +223,7 @@ public class HomeController
 			wishlistRepository.updateWishList(updatedWishList);
 			return "redirect:/show-user-page";
 		}
-		@GetMapping("/delete/{wishListId}")
+		@GetMapping("/deletewishlist/{wishListId}")
 		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist) {
 
 			wishlistRepository.deleteWishListId(deleteWishlist);
