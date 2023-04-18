@@ -226,22 +226,23 @@ public class WishlistRepository
 			}
 		}
 
-		public void addWish(WishListItems wishListItems) {
+		public void addWish(WishListItems wishListItems,int wishListId) {
 
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL, UID, PWD);
-				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items(wish_list_id, item_line_id, item_name, item_QTY, item_description, item_URL, item_price, item_reserved, item_reserved_by) VALUES(?,?,?,?,?,?,?,?,?)";
+				final String SQLcreatewish = "INSERT INTO wishlist.wish_list_items( wish_list_id, item_name, item_QTY, item_description, item_URL, item_price)  VALUES(?,?,?,?,?,?) ";
 				PreparedStatement preparedStatement = connection.prepareStatement(SQLcreatewish);
 
-				preparedStatement.setInt(1, wishListItems.getWishListId());
-				preparedStatement.setInt(2, wishListItems.getItemLineId());
-				preparedStatement.setString(3, wishListItems.getItemName());
-				preparedStatement.setInt(4, wishListItems.getItemQTY());
-				preparedStatement.setString(5, wishListItems.getItemDescription());
-				preparedStatement.setString(6, wishListItems.getItemURL());
-				preparedStatement.setDouble(7, wishListItems.getItemPrice());
-				preparedStatement.setBoolean(8,wishListItems.isItemReserved());
-				preparedStatement.setString(9,wishListItems.getItemReservedBy());
+
+				preparedStatement.setInt(1, wishListId);
+				preparedStatement.setString(2, wishListItems.getItemName());
+				preparedStatement.setInt(3, wishListItems.getItemQTY());
+				preparedStatement.setString(4, wishListItems.getItemDescription());
+				preparedStatement.setString(5, wishListItems.getItemURL());
+				preparedStatement.setDouble(6, wishListItems.getItemPrice());
+//				preparedStatement.setBoolean(7,wishListItems.isItemReserved());
+//				preparedStatement.setString(8,wishListItems.getItemReservedBy());
+
 
 				preparedStatement.executeUpdate();
 

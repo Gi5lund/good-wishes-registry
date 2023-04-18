@@ -54,14 +54,14 @@ public class HomeController
 
 
 		@PostMapping("/createwish")
-		public String createWish(@RequestParam("wishListId") int newWishListId,
-								 @RequestParam("itemLineId") int newItemLineId,
+		public String createWish( @RequestParam("itemLineId") int newItemLineId,
 								 @RequestParam("itemName") String newItemName,
 								 @RequestParam("itemQTY") int newItemQTY,
 								 @RequestParam("newItemDescription") String newItemDescription,
 								 @RequestParam("itemURL") String newItemURL,
-								 @RequestParam("itemPrice") double newItemPrice) {
+								 @RequestParam("itemPrice") double newItemPrice,HttpSession session) {
 			//Laver nyt ønske
+			int newWishListId=(int) session.getAttribute("currentWishListId");
 			WishListItems newWish = new WishListItems();
 			newWish.setWishListId(newWishListId);
 			newWish.setItemLineId(newItemLineId);
@@ -74,7 +74,7 @@ public class HomeController
 			newWish.setItemReservedBy("");
 
 			//Gem nyt ønske
-			wishlistRepository.addWish(newWish);
+			wishlistRepository.addWish(newWish,newWishListId);
 
 			return "redirect:showwishes";
 
