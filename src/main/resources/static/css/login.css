@@ -1,12 +1,7 @@
 html {
     height: 100%;
 }
-body {
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
-    background: linear-gradient(lightblue, burlywood);
-}
+
 
 .login-box {
     position: absolute;
@@ -15,7 +10,7 @@ body {
     width: 400px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: rgba(40,55,0,.5);
+    background: #5caafc;
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 20px;
@@ -39,7 +34,7 @@ input[type=submit]{
     display: block;
     padding: 15px 40px;
 
-    color: #03e9f4;
+    color: #ffffff;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -75,7 +70,7 @@ input[type=submit]{
 .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #03e9f4;
+    color: #fddb3a;
     font-size: 12px;
 }
 
@@ -83,7 +78,7 @@ input[type=submit]{
     position: relative;
     display: inline-block;
     /*padding: 10px 20px;*/
-    color: #03e9f4;
+    color: #5caafc;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -93,7 +88,7 @@ input[type=submit]{
     letter-spacing: 4px
 }
 input[type=submit]:hover{
-    color: #fff;
+    color: #fddb3a;
 }
 .login-box a:hover {
     background: #03e9f4;
