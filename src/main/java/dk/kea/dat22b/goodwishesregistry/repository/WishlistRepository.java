@@ -151,6 +151,7 @@ public class WishlistRepository
 				//set attributes in prepared statement
 				preparedStatement.setString(1, wishlist.getWishListName());
 				preparedStatement.setString(2, wishlist.getOccation());
+				preparedStatement.setInt(3,userID);
 				//execute
 				preparedStatement.executeUpdate();
 			}

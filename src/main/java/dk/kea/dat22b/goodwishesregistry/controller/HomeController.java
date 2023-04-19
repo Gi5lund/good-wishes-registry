@@ -188,21 +188,22 @@ public class HomeController
 		public String showCreateWishList(){
 			return "createwishlist";
 		}
-		@PostMapping("/create-wishlist")
-		public String createWishlist(@RequestParam("wishListId") int newWishListId,
-										 @RequestParam("WishListName") String newWishlistName,
-										 @RequestParam("occation") String newOccation,
-										 @RequestParam("userId") int newUserId){
+		@PostMapping("/createwishlist")
+		public String createWishlist( @RequestParam("WishListName") String newWishlistName,
+										 @RequestParam("occation") String newOccation, HttpSession session){
 
 			WishList newWishList = new WishList();
-			newWishList.setWishListId(newWishListId);
+			int newUserId=(int) session.getAttribute("UserID");
 			newWishList.setWishListName(newWishlistName);
 			newWishList.setOccation(newOccation);
 			newWishList.setUserId(newUserId);
 
 			wishlistRepository.addWishList(newWishList,newUserId);
+			List<WishList> wishLists= wishlistRepository.getWishListByUserId(newUserId);
+			WishList current=wishLists.get(wishLists.size()-1);
+			session.setAttribute("currentWishList",current.getWishListId());
 
-			return "redirect:/show-user-page";
+			return "redirect:createwish";
 		}
 		@GetMapping("/updatewishlist/{wishListId}")
 		public String showUpdateWishList(@PathVariable("wishListId") int updateWishlist, Model model)
@@ -212,7 +213,7 @@ public class HomeController
 
 			model.addAttribute("wishList", updateWishListe);
 
-			return "updatewish";
+			return "/updatewishlist";
 		}
 		@PostMapping("/updatewishlist")
 		public String updateWishList(@RequestParam("wishListId") int updateWishListId,
