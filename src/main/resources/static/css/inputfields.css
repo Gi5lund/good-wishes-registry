@@ -271,3 +271,8 @@ input:hover {
     display: grid;
     grid-gap: 0px;
 }
+
+.image {
+    background-image: url("../pictures/bluegifts.png");
+    background-size: cover;
+}
