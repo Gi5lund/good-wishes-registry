@@ -2,12 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>wishes</title>
+    <title>Ønsker</title>
+    <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
+    <link rel="stylesheet" th:href="@{../css/showpages}" href="../static/css/showpages.css">
+
 </head>
-<body>
-<div class="container">
+    <header th:replace="~{fragments/fragment :: topnav}">
+    </header>
+
+<body class="image">
+<div>
     <div>
-        <h1>Ønskeliste</h1>
+        <h1>Ønsker</h1>
     </div>
     <div>
         <ul>
