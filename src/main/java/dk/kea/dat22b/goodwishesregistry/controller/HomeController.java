@@ -206,8 +206,9 @@ public class HomeController
 			return "redirect:createwish";
 		}
 		@GetMapping("/updatewishlist/{wishListId}")
-		public String showUpdateWishList(@PathVariable("wishListId") int updateWishlist, Model model)
+		public String showUpdateWishList(@PathVariable("wishListId") int updateWishlist, Model model,HttpSession session)
 		{
+			session.setAttribute("currenWishList",updateWishlist);
 			WishList updateWishListe = wishlistRepository.findWishListById(updateWishlist);
 
 
@@ -239,7 +240,7 @@ public class HomeController
 				newUser.setUserName(userName);
 				newUser.setUserPassword(userPassword);
 				wishlistRepository.addUser(newUser);
-				return "redirect:jacob";
+				return "redirect:index";
 			}
 
 		@GetMapping("/adduser")

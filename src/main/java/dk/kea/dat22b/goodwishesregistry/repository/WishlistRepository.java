@@ -74,11 +74,11 @@ public class WishlistRepository
 			}
 			return user;
 		}
-		public WishUser loginUser(WishUser wishUser,String username,String userpassword){
+		public WishUser loginUser(WishUser wishuser,String username,String userpassword){
 			WishUser user=new WishUser();
 			try {
 				Connection connection=ConnectionManager.getConnection(DB_URL,UID,PWD);
-				Statement statement=connection.createStatement();
+//				Statement statement=connection.createStatement();
 				final String SQL_LOGIN="SELECT * FROM wishlist.wish_user WHERE user_name=? AND  user_password =?";
 				PreparedStatement preparedStatement=connection.prepareStatement(SQL_LOGIN);
 				preparedStatement.setString(1,username);
@@ -174,6 +174,7 @@ public class WishlistRepository
 
 				preparedStatement.setString(1,wish_list_name);
 				preparedStatement.setString(2, occation);
+				preparedStatement.setInt(3,wish_list_id);
 
 				preparedStatement.executeUpdate();
 			}
