@@ -6,21 +6,21 @@
   <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
   <link rel="stylesheet" th:href="@{../css/inputfields.css}" href="../static/css/inputfields.css">
 </head>
-<header th:replace="fragments/fragment :: topnav">
+<header th:replace="~{fragments/fragment :: topnav}">
 </header>
 <body class="image">
 <div class="update-wl-container">
   <div class="text">
     <h1>Opdater ønskeliste</h1>
   </div>
-    <form action="updatewishlist" method="post">
+    <form action="/updatewishlist" method="post">
       <div class="page">
 
-          <input id="wishListId-field" name="wishListId" type="text" th:value="${wishlist.wishListId}" ><br>
+          <input id="wishListId-field" name="wishListId" type="text" th:value="${wishList.getWishListId()}" ><br>
 
         <div class="field field_v2">
           <label for="WishListName-field" class="ha-screen-reader">Navn på ønskeliste</label>
-          <input id="WishListName-field" class="field__input" placeholder="e.g. De bedste ønsker" name="WishListName" type="text" th:value="${wishlist.wishListname}" ><br>
+          <input id="WishListName-field" class="field__input" placeholder="e.g. De bedste ønsker" name="WishListName" type="text" th:value="${wishList.getWishListName()}" ><br>
           <span class="field__label-wrap" aria-hidden="true">
             <span class="field__label">Navn på ønskeliste</span>
           </span>
@@ -28,13 +28,13 @@
 
         <div class="field field_v2">
           <label for="occation-field" class="ha-screen-reader">Begivenhed</label>
-          <input id="occation-field" class="field__input" placeholder="e.g. Fødselsdag" name="occation" type="text" th:value="${wishlist.occation}" ><br>
+          <input id="occation-field" class="field__input" placeholder="e.g. Fødselsdag" name="occation" type="text" th:value="${wishList.getOccation()}" ><br>
           <span class="field__label-wrap" aria-hidden="true">
             <span class="field__label">Begivenhed</span>
           </span>
         </div>
 
-          <input id="userId-field" name="userId" type="hidden" th:value="${wishlist.UserId}" ><br>
+          <input id="userId-field" name="userId" type="hidden" th:value="${session.UserID}" ><br>
 
           <input class="submit" type="submit" value="Opdater ønskeliste"><br>
       </div>

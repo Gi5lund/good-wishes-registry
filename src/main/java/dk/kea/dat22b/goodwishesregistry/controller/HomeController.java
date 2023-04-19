@@ -110,7 +110,7 @@ public class HomeController
 
 			wishlistRepository.updateWish(updateWishItem);
 
-			return "/redirect: showwishes";
+			return "redirect:showwishes";
 		}
 
 		@GetMapping("/deletewish/{itemLineId}")
@@ -148,7 +148,7 @@ public class HomeController
 				if (user == null) {
 					user = new WishUser();
 				}
-				String loginstatus = "";
+				String loginstatus;
 				user = wishlistRepository.loginUser(user, username, password);
 				// the portion below should check if user exist,
 				if (user.getUserName() == null) {
@@ -205,26 +205,26 @@ public class HomeController
 
 			return "redirect:createwish";
 		}
-		@GetMapping("/updatewishlist/{wishListId}")
-		public String showUpdateWishList(@PathVariable("wishListId") int updateWishlist, Model model,HttpSession session)
+		@GetMapping("updatewishlist/{wishListId}")
+		public String showUpdateWishList(@PathVariable("wishListId") int wishlistID, Model wishListModel,HttpSession session)
 		{
-			session.setAttribute("currenWishList",updateWishlist);
-			WishList updateWishListe = wishlistRepository.findWishListById(updateWishlist);
+			session.setAttribute("currentWishList",wishlistID);
+			WishList updatewishList = wishlistRepository.findWishListById(wishlistID);
 
 
-			model.addAttribute("wishList", updateWishListe);
+			wishListModel.addAttribute("wishList", updatewishList);
 
 			return "/updatewishlist";
 		}
 		@PostMapping("/updatewishlist")
-		public String updateWishList(@RequestParam("wishListId") int updateWishListId,
-									 @RequestParam("WishListName") String updateWishlistName,
-									 @RequestParam("occation") String updateOccation,
-									 @RequestParam("userId") int updateUserId){
+		public String updateWishList( @RequestParam("wishListId") int updateWishListId,@RequestParam("WishListName") String updateWishlistName,
+									 @RequestParam("occation") String updateOccation, @RequestParam("userId") int updateUserId, HttpSession session){
+			  session.setAttribute("currentWishList",updateWishListId);
+			 session.setAttribute("UserID",updateUserId);
 			WishList updatedWishList = new WishList(updateWishListId, updateWishlistName, updateOccation, updateUserId);
 
 			wishlistRepository.updateWishList(updatedWishList);
-			return "redirect:/show-user-page";
+			return "redirect:show-user-page";
 		}
 		@GetMapping("/deletewishlist/{wishListId}")
 		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist) {
