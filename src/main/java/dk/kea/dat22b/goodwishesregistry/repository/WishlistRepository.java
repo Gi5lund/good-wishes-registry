@@ -204,6 +204,7 @@ public class WishlistRepository
 				resultSet.next();
 				String wish_list_name = resultSet.getString(2);
 				String occation = resultSet.getString(3);
+
 				wishlist.setWishListName(wish_list_name);
 				wishlist.setOccation(occation);
 			} catch(SQLException e) {

@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
     <link rel="stylesheet" th:href="@{../css/inputfields.css}" href="../static/css/inputfields.css">
 </head>
-    <header th:replace="fragments/fragment :: topnav">
+    <header th:replace="~{fragments/fragment :: topnav}">
     </header>
 <body class="image">
     <div class="text">
@@ -14,13 +14,11 @@
     </div>
     <form action="/updatewish" method="post">
       <div class="page">
-<!--
-          <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItems.wishListId}"><br>
-          <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItems.itemLineId}"><br>
--->
+          <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItem.wishListId}"><br>
+          <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItem.itemLineId}"><br>
         <div class="field field_v2">
           <label for="ItemName-field" class="ha-screen-reader">Navn på ønsket</label>
-          <input id="itemName-field" class="field__input" placeholder=" e.g. Tøj" name="itemName" type="text" th:value="${wishListItems.itemName}"><br>
+          <input id="itemName-field" class="field__input" placeholder=" e.g. Tøj" name="itemName" type="text" th:value="${wishListItem.itemName}"><br>
           <span class="field__label-wrap" aria-hidden="true">
           <span class="field__label">Navn på ønske</span>
           </span>
@@ -28,7 +26,7 @@
 
         <div class="field field_v2">
           <label for="itemQTY-field" class="ha-screen-reader">Antal</label>
-          <input id="itemQTY-field" class="field__input" placeholder=" e.g. 3" name="itemQTY" type="text" th:value="${wishListItems.itemQTY}"><br>
+          <input id="itemQTY-field" class="field__input" placeholder=" e.g. 3" name="itemQTY" type="text" th:value="${wishListItem.itemQTY}"><br>
           <span class="field__label-wrap" aria-hidden="true">
           <span class="field__label">Antal</span>
           </span>
@@ -36,7 +34,7 @@
 
         <div class="field field_v2">
           <label for="itemDescreption-field" class="ha-screen-reader">Beskrivelse</label>
-          <input id="itemDescreption-field" class="field__input" placeholder=" e.g. størrelse, farve etc" name="itemDescreption" type="text" th:value="${wishListItems.itemDescreption}"><br>
+          <input id="itemDescreption-field" class="field__input" placeholder=" e.g. størrelse, farve etc" name="itemDescreption" type="text" th:value="${wishListItem.itemDescreption}"><br>
           <span class="field__label-wrap" aria-hidden="true">
           <span class="field__label">Beskrivelse</span>
           </span>
@@ -44,7 +42,7 @@
 
         <div class="field field_v2">
           <label for="itemURL-field" class="ha-screen-reader">Indsæt link</label>
-          <input id="itemURL-field" class="field__input" placeholder=" e.g. https://www.magasin.dk/?gclid=CjwKCAjw3POhBhBQEiwAqTCuBmIZ9SX523rE7OUQXyvcYT3ecEXImLS48OOiPNx1DKZyC7E6NurKaRoCbHEQAvD_BwE" name="itemURL" type="text" th:value="${wishListItems.itemURL}"><br>
+          <input id="itemURL-field" class="field__input" placeholder=" e.g. https://www.magasin.dk/?gclid=CjwKCAjw3POhBhBQEiwAqTCuBmIZ9SX523rE7OUQXyvcYT3ecEXImLS48OOiPNx1DKZyC7E6NurKaRoCbHEQAvD_BwE" name="itemURL" type="text" th:value="${wishListItem.itemURL}"><br>
           <span class="field__label-wrap" aria-hidden="true">
           <span class="field__label">Indsæt link</span>
           </span>
@@ -52,15 +50,13 @@
 
         <div class="field field_v2">
           <label for="itemPrice-field" class="ha-screen-reader">Pris</label>
-          <input id="itemPrice-field" class="field__input" placeholder=" e.g. 100" name="itemPrice" type="text" th:value="${wishListItems.itemPrice}"><br>
+          <input id="itemPrice-field" class="field__input" placeholder=" e.g. 100" name="itemPrice" type="text" th:value="${wishListItem.itemPrice}"><br>
           <span class="field__label-wrap" aria-hidden="true">
           <span class="field__label">Pris</span>
           </span>
         </div>
-<!--
-          <input id="itemReserved-field" name="itemReserved" type="hidden" th:value="${wishListItems.itemReserved}"><br>
-          <input id="itemReservedBy-field" name="itemReservedBy" type="hidden" th:value="${wishListItems.itemReservedBy}"><br>
--->
+          <input id="itemReserved-field" name="itemReserved" type="hidden" th:value="${wishListItem.itemReserved}"><br>
+          <input id="itemReservedBy-field" name="itemReservedBy" type="hidden" th:value="${wishListItem.itemReservedBy}"><br>
 
           <input class="submit" type="submit" value="Opdater ønske"><br>
       </div>
