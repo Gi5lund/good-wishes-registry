@@ -109,7 +109,7 @@ public class HomeController
 			WishListItems updateWishItem = new WishListItems(updateWishListId, updateItemLineId, updateItemName, updateItemQTY, updateItemDescreption,
 															updateItemURL, 	updateItemPrice, updateItemReserved,updateItemReservedBy);
 
-			wishlistRepository.updateWish(updateWishItem);
+			wishlistRepository.updateWish(updateWishItem,updateItemLineId);
 
 			return "redirect:showwishes";
 		}

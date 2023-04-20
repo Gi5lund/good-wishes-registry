@@ -257,7 +257,7 @@ public class WishlistRepository
 				e.printStackTrace();
 			}
 		}
-		public void updateWish(WishListItems wishListItems){
+		public void updateWish(WishListItems wishListItems, int itemid){
 			final String UPDATE_QUERY = "UPDATE wishlist.wish_list_items SET item_name=?, item_QTY=?, item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
 
 			try{
