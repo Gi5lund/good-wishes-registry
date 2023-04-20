@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Eksempel Jacob</title>
+    <title>Brugergrænse</title>
     <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
     <link rel="stylesheet" th:href="@{../css/showpages.css}" href="../static/css/showpages.css">
 </head>
@@ -14,6 +14,8 @@
 <div>
     <h2 th:text="'Velkommen '+${session.UserName}"></h2>
     <h3>Mine ønskelister</h3>
+    <br>
+    <br>
 </div>
 <table class="wishlist">
     <thead>
@@ -38,6 +40,8 @@
     </tbody>
 
 </table>
-
+<div class="imgbox">
+<img class="center-fit" th:src="@{../pictures/bluegifts.png}" src="../static/pictures/bluegifts.png" alt="gaver">
+</div>
 </body>
 </html>

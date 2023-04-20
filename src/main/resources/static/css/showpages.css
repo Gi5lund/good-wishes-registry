@@ -1,12 +1,56 @@
-.image {
-    background-image: url("../pictures/bluegifts.png");
-
-
-
+* {
+    margin: 0;
+    padding: 0;
+}
+.imgbox {
+    display: grid;
+    height: 100%;
+    z-index: -1;
+}
+.center-fit {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+.background {
+    max-width: 99%;
+    max-height: 99%;
+    z-index: -1;
+}
+.wishes {
+    font-family: 'Exo', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    border-spacing: 1px;
+    align-content: center;
+}
+.wishlist {
 
 }
-
-body {
-
+td:hover {
+    font-size: 20px;
+}
+th {
+    font-size: 20px;
+}
+table, th, td {
+    position: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-collapse: collapse;
+    overflow-y:auto;
+    empty-cells: hide;
+}
+td {
+    border-top:  1px solid black;
 }
 
+table {
+    width: 50%;
+    empty-cells: hide;
+
+}
+tr:nth-child(even) {
+    background-color: rgba(150, 212, 212, 0.4);
+}

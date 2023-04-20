@@ -64,7 +64,14 @@ li:hover::after{
     width: 2rem;
 
 }
+section {
+    display: flex;
+}
+.trustpilot {
+    justify-content: right;
+}
 .trustpilot img {
+    justify-content: right;
     width: 150px;
     height: 100px;
 }

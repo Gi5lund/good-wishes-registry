@@ -239,7 +239,7 @@ public class HomeController
 				newUser.setUserName(userName);
 				newUser.setUserPassword(userPassword);
 				wishlistRepository.addUser(newUser);
-				return "redirect:jacob";
+				return "redirect:/show-user-page";
 			}
 
 		@GetMapping("/adduser")
