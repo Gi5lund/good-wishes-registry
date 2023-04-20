@@ -173,13 +173,13 @@ public class HomeController
 
 				wishUserModel.addAttribute("username", user.getUserName());
 				wishUserModel.addAttribute("wishlists", user.getWishLists());
-				return "redirect:show-user-page";
+				return "redirect:show-user-page/"+user.getUserId();
 			}
 
 
-		@GetMapping("show-user-page")
-		public String userPage(HttpSession session, Model wishUserModel) {
-				int userID=(int) session.getAttribute("UserID");
+		@GetMapping("show-user-page/{id}")
+		public String userPage(@PathVariable("id") int userID, HttpSession session, Model wishUserModel) {
+//				int userID=(int) session.getAttribute("UserID");
 				WishUser user=wishlistRepository.getUserById(userID);
 				user.setWishLists((List<WishList>) session.getAttribute("wishlists"));
 				wishUserModel.addAttribute("wishlists",user.getWishLists());
@@ -233,7 +233,7 @@ public class HomeController
 			session.setAttribute("UserID",user.getUserId());
 			wishUserModel.addAttribute("username", user.getUserName());
 			wishUserModel.addAttribute("wishlists", user.getWishLists());
-			return "show-user-page";
+			return "show-user-page/"+updateUserId;
 		}
 		@GetMapping("/deletewishlist/{wishListId}")
 		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist) {
