@@ -2,18 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Eksempel Jacob</title>
+    <title>Brugergrænse</title>
     <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
     <link rel="stylesheet" th:href="@{../css/showpages.css}" href="../static/css/showpages.css">
 </head>
-
+<header th:replace="~{fragments/fragment :: topnav}"> </header>
 <body>
-<header th:replace="~{fragments/fragment :: topnav}">
-
-</header>
 <div>
     <h2 th:text="'Velkommen '+${session.UserName}"></h2>
+    <br>
     <h3>Mine ønskelister</h3>
+    <br>
+    <div class="center">
+        <a th:href="@{/createwishlist}" href="/createwishlist" class="button4" style="text-align: center">Opret ønskeliste</a>
+    </div>
+<!--    <h4><>Opret ny ønskeliste</a></h4>-->
+    <br>
+    <br>
 </div>
 <table class="wishlist">
     <thead>
@@ -23,21 +28,17 @@
     <th>
         Begivenhed
     </th>
-    <th>
-        <a th:href="@{/createwishlist}" href="/createwishlist">Opret ny ønskeliste</a>
-    </th>
     </thead>
     <tbody>
     <tr th:each="wishlist : ${session.wishlists}">
     <td th:text="${wishlist.getWishListName()}"> </td>
     <td th:text="${wishlist.getOccation()}"></td>
-    <td> <a  th:href="@{'/showwishes/'+${wishlist.getWishListId()}}" href="/showwishes"> Se ønskeliste</a>  </td>
+    <td><a th:href="@{'/showwishes/'+${wishlist.getWishListId()}}" href="/showwishes"> Se ønskeliste</a>  </td>
     <td><a th:href="@{'/updatewishlist/'+${wishlist.getWishListId()}}" href="/updatewishlist">Opdater ønskeliste</a></td>
     <td><a th:href="@{'/deletewishlist/'+${wishlist.getWishListId()}}" href="/delete/">Slet ønskeliste</a></td>
     </tr>
     </tbody>
 
 </table>
-
 </body>
 </html>

@@ -8,8 +8,9 @@
 html, body {
     background: #ffffff;
     font-family: "Montserrat", sans-serif;
-    }
-
+    background-image: url("../pictures/bluegifts.png");
+    background-size: cover;
+}
 header {
     display: flex;
     align-items: center;
@@ -19,9 +20,28 @@ header {
 }
 header img{
     width: 225px;
-    height: 200px;
+    height: 225px;
+    top:0px;
 }
-
+h1 {
+    text-align: center;
+}
+/*.header img {*/
+/*    display:flex;*/
+/*    position: fixed;*/
+/*    align-content: center;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    top: 75px;*/
+/*    left:0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    z-index: -1;*/
+/*}*/
+.image {
+    background-image: url("../pictures/bluegifts.png");
+    background-size: cover;
+}
 .top-nav {
 
 }
@@ -64,7 +84,14 @@ li:hover::after{
     width: 2rem;
 
 }
+section {
+    display: flex;
+}
+.trustpilot {
+    justify-content: right;
+}
 .trustpilot img {
+    justify-content: right;
     width: 150px;
     height: 100px;
 }

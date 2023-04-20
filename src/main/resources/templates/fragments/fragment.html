@@ -7,11 +7,11 @@
 </head>
 <header th:fragment="topnav">
 
-        <div class="logo"><a th:href="@{/jacob.html}" href="/jacob.html"> <img th:src="@{../pictures/logo-removebg-preview.png}" src="../static/pictures/logo-removebg-preview.png" alt="Logo"></a></div>
+        <div class="logo"><a th:href="@{/index}" href="/index"> <img th:src="@{../pictures/Goodwish2.png}" src="../static/pictures/Goodwish2.png" alt="Logo"></a></div>
         <nav class="top-nav">
             <ul>
                 <li><a th:href="@{/index}" href="/index" class="active">Hjem</a></li>
-                <li><a href="#ønskeliste">Find ønskeliste</a></li>
+                <li><a th:href="@{/show-user-page}" href="/show-user-page">Find ønskeliste</a></li>
                 <li><a th:href="@{/adduser}" href="adduser">Opret Bruger</a></li>
                 <li><a th:href="@{/login}" href="/login">Login</a></li>
                 </li>
