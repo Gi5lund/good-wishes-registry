@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <title>Ønsker</title>
     <link rel="stylesheet" th:href="@{../css/jacob.css}" href="../static/css/jacob.css">
-    <link rel="stylesheet" th:href="@{../css/showpages}" href="../static/css/showpages.css">
+    <link rel="stylesheet" th:href="@{../css/showpages.css}" href="../static/css/showpages.css">
 
 </head>
     <header th:replace="~{fragments/fragment :: topnav}">
     </header>
 
-<body class="image">
+<body>
 <div>
     <div>
         <h1>Ønsker</h1>
-        <h4><a  th:href="@{/createwish}" href="createwish.html">Opret nyt ønske</a></h4>
+        <br>
+        <div class="center">
+            <a th:href="@{/createwish}" href="/createwish" class="button4" >Opret ønske</a>
+        </div>
+        <br>
+<!--        <h4><a  th:href="@{/createwish}" href="createwish.html">Opret nyt ønske</a></h4>-->
     </div>
 
-    <table class="wishes">
+    <table>
         <thead>
         <th>Ønskeliste id</th>
         <th>Ønske id</th>
@@ -38,10 +43,10 @@
             <td th:text="${wishItems.itemURL}"></td>
             <td th:text="${wishItems.itemPrice}"></td>
             <td>
-                <a th:href="@{'/updatewish/' + ${wishItems.itemLineId}}" href="/updatewish">Opdater ønske</a>
+                <a th:href="@{'/updatewish/' + ${wishItems.itemLineId}}" href="/updatewish.html">Opdater ønske</a>
             </td>
             <td>
-                <a th:href="@{'/deletewish/' + ${wishItems.itemLineId}}" href="/deletewish">Slet ønske</a>
+                <a th:href="@{'/deletewish/' + ${wishItems.itemLineId}}" href="/deletewish.html">Slet ønske</a>
             </td>
         </tr>
 
