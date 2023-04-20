@@ -92,6 +92,7 @@ public class HomeController
 			//Fortæl Spring hvilken HTML-side der skal vises.
 
 			return "updatewish";
+
 		}
 
 		@PostMapping("updatewish")
