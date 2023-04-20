@@ -116,12 +116,12 @@ public class HomeController
 		}
 
 		@GetMapping("/deletewish/{itemLineId}")
-		public String deleteWish(@PathVariable("itemLineId") int deleteWish){
+		public String deleteWish(@PathVariable("itemLineId") int deleteWish, HttpSession session){
 			//slet fra repository
 			wishlistRepository.deleteById(deleteWish);
-
+			int wishlistid=(int) session.getAttribute("currentWishList");
 			//returner til index-siden
-			return "redirect:showwishes/{wishlistid}";
+			return "redirect:/showwishes/"+wishlistid;
 		}
 
 		@GetMapping("/login")
