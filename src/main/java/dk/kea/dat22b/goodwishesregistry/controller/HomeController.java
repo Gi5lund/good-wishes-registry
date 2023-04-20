@@ -100,13 +100,13 @@ public class HomeController
 									 @RequestParam("itemLineId") int updateItemLineId,
 								 	 @RequestParam("itemName") String updateItemName,
 								 	 @RequestParam("itemQTY") int updateItemQTY,
-									 @RequestParam("itemDescreption") String updateItemDescreption,
+									 @RequestParam("updateItemDescription") String updateItemDescription,
 									 @RequestParam("itemURL") String updateItemURL,
 									 @RequestParam("itemPrice") double updateItemPrice,
 									 @RequestParam("itemReserved") boolean updateItemReserved,
 									 @RequestParam("itemReservedBy") String updateItemReservedBy){
 
-			WishListItems updateWishItem = new WishListItems(updateWishListId, updateItemLineId, updateItemName, updateItemQTY, updateItemDescreption,
+			WishListItems updateWishItem = new WishListItems(updateWishListId, updateItemLineId, updateItemName, updateItemQTY, updateItemDescription,
 															updateItemURL, 	updateItemPrice, updateItemReserved,updateItemReservedBy);
 
 			wishlistRepository.updateWish(updateWishItem);
@@ -120,7 +120,7 @@ public class HomeController
 			wishlistRepository.deleteById(deleteWish);
 
 			//returner til index-siden
-			return "redirect:showwishes";
+			return "redirect:showwishes/{wishlistid}";
 		}
 
 		@GetMapping("/login")
