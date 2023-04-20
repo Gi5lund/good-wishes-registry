@@ -58,6 +58,6 @@ public class WishUser {
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", UserPassword='" + UserPassword + '\'' +
-                '}';
+                ", Wishlists: ["+wishLists+"] }";
     }
 }

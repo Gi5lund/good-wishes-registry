@@ -28,7 +28,7 @@
     </th>
     </thead>
     <tbody>
-    <tr th:each="wishlist : ${wishlists}">
+    <tr th:each="wishlist : ${session.wishlists}">
     <td th:text="${wishlist.getWishListName()}"> </td>
     <td th:text="${wishlist.getOccation()}"></td>
     <td> <a  th:href="@{'/showwishes/'+${wishlist.getWishListId()}}" href="/showwishes"> Se ønskeliste</a>  </td>
