@@ -257,7 +257,7 @@ public class WishlistRepository
 				e.printStackTrace();
 			}
 		}
-		public void updateWish(WishListItems wishListItems, int itemid){
+		public void updateWish(WishListItems wishListItems){
 			final String UPDATE_QUERY = "UPDATE wishlist.wish_list_items SET item_name=?, item_QTY=?, item_description=?, item_URL=?, item_price=? WHERE item_line_id=?";
 
 			try{
@@ -268,13 +268,14 @@ public class WishlistRepository
 				String itemDescription = wishListItems.getItemDescription();
 				String itemURL = wishListItems.getItemURL();
 				double itemPrice = wishListItems.getItemPrice();
+				int item_line_id=wishListItems.getItemLineId();
 
 				preparedStatement.setString(1, itemName);
 				preparedStatement.setInt(2, itemQTY);
 				preparedStatement.setString(3,itemDescription);
 				preparedStatement.setString(4, itemURL);
 				preparedStatement.setDouble(5,itemPrice);
-
+				preparedStatement.setInt(6,item_line_id);
 				preparedStatement.executeUpdate();
 
 			}catch(SQLException e){

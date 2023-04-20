@@ -100,18 +100,19 @@ public class HomeController
 									 @RequestParam("itemLineId") int updateItemLineId,
 								 	 @RequestParam("itemName") String updateItemName,
 								 	 @RequestParam("itemQTY") int updateItemQTY,
-									 @RequestParam("updateItemDescription") String updateItemDescription,
+									 @RequestParam("itemDescription") String updateItemDescription,
 									 @RequestParam("itemURL") String updateItemURL,
 									 @RequestParam("itemPrice") double updateItemPrice,
 									 @RequestParam("itemReserved") boolean updateItemReserved,
-									 @RequestParam("itemReservedBy") String updateItemReservedBy){
+									 @RequestParam("itemReservedBy") String updateItemReservedBy,Model wishListModel, HttpSession session){
 
-			WishListItems updateWishItem = new WishListItems(updateWishListId, updateItemLineId, updateItemName, updateItemQTY, updateItemDescription,
-															updateItemURL, 	updateItemPrice, updateItemReserved,updateItemReservedBy);
+			WishListItems updateWishItem =new WishListItems(updateWishListId,updateItemLineId,updateItemName,updateItemQTY,updateItemDescription,updateItemURL,updateItemPrice,updateItemReserved,updateItemReservedBy);
 
-			wishlistRepository.updateWish(updateWishItem,updateItemLineId);
+			wishlistRepository.updateWish(updateWishItem);
+			int wishlistid=(int) session.getAttribute("currentWishList");
+			wishListModel.addAttribute("showWishes", wishlistid);
 
-			return "redirect:showwishes";
+			return "redirect:showwishes/"+wishlistid;
 		}
 
 		@GetMapping("/deletewish/{itemLineId}")
