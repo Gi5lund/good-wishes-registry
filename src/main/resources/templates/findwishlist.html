@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>find ønskeliste</title>
+</head>
+<header th:replace="~{fragments/fragment :: topnav}"></header>
+<body>
+<h2>Her kan du søge på en andens brugers ønskeliste</h2>
+<form action="/findwishlist" method="post">
+    <input id="search-input" name="usermail">
+    <label for="search-input">Brugers e-mail</label>
+</form>
+</body>
+</html>
