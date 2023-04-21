@@ -268,13 +268,14 @@ public class WishlistRepository
 				String itemDescription = wishListItems.getItemDescription();
 				String itemURL = wishListItems.getItemURL();
 				double itemPrice = wishListItems.getItemPrice();
+				int item_line_id=wishListItems.getItemLineId();
 
 				preparedStatement.setString(1, itemName);
 				preparedStatement.setInt(2, itemQTY);
 				preparedStatement.setString(3,itemDescription);
 				preparedStatement.setString(4, itemURL);
 				preparedStatement.setDouble(5,itemPrice);
-
+				preparedStatement.setInt(6,item_line_id);
 				preparedStatement.executeUpdate();
 
 			}catch(SQLException e){
