@@ -14,8 +14,7 @@
     </div>
     <form action="/updatewish" method="post">
       <div class="page">
-          <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItem.wishListId}"><br>
-          <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItem.itemLineId}"><br>
+
         <div class="field field_v2">
           <label for="ItemName-field" class="ha-screen-reader">Navn på ønsket</label>
           <input id="itemName-field" class="field__input" placeholder=" e.g. Tøj" name="itemName" type="text" th:value="${wishListItem.itemName}"><br>
@@ -55,10 +54,14 @@
           <span class="field__label">Pris</span>
           </span>
         </div>
+
+          <input class="submit" type="submit" value="Opdater ønske"><br>
+
+          <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishListItem.wishListId}"><br>
+          <input id="itemLineId-field" name="itemLineId" type="hidden" th:value="${wishListItem.itemLineId}"><br>
           <input id="itemReserved-field" name="itemReserved" type="hidden" th:value="${wishListItem.itemReserved}"><br>
           <input id="itemReservedBy-field" name="itemReservedBy" type="hidden" th:value="${wishListItem.itemReservedBy}"><br>
 
-          <input class="submit" type="submit" value="Opdater ønske"><br>
       </div>
     </form>
 
