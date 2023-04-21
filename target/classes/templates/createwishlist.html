@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create wish</title>
+    <link rel="stylesheet" th:href="@{../css/fragment.css}" href="../static/css/fragment.css">
+    <link rel="stylesheet" th:href="@{../css/inputfields.css}" href="../static/css/inputfields.css">
+</head>
+<header th:replace="~{fragments/fragment :: topnav}">
+</header>
+<body class="image">
+<div class="create-wl-container">
+    <div class="text">
+        <h1>Ny ønskeliste</h1>
+    </div>
+
+        <form action="createwishlist" method="post">
+            <div class="page">
+
+                    <input id="wishListId-field" name="wishListId" type="hidden"><br>
+
+                <div class="field field_v2">
+                    <label for="WishListName-field" class="ha-screen-reader">Navn på ønskeliste</label>
+                    <input id="WishListName-field" class="field__input" placeholder="e.g. De bedste ønsker" name="WishListName" type="text"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                        <span class="field__label">Navn på ønskeliste</span>
+                    </span>
+                </div>
+
+                <div class="field field_v2">
+                    <label for="occation-field" class="ha-screen-reader">Begivenhed</label>
+                    <input id="occation-field" class="field__input" placeholder="e.g. Fødselsdag"  name="occation" type="text"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                        <span class="field__label">Begivenhed</span>
+                    </span>
+                </div>
+
+                    <input id="userId-field" name="userId" type="hidden"><br>
+
+                    <input class="submit"  type="submit" value="Tilføj ønskeliste"><br>
+            </div>
+        </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ønske</title>
+    <link rel="stylesheet" th:href="@{../css/fragment.css}" href="../static/css/fragment.css">
+    <link rel="stylesheet" th:href="@{../css/inputfields.css}" href="../static/css/inputfields.css">
+</head>
+    <header th:replace="~{fragments/fragment :: topnav}">
+    </header>
+<body class="image">
+    <div class="text">
+        <h1>Opret nyt ønske</h1>
+    </div>
+        <form action="createwish" method="post">
+            <div class="page">
+<!--
+                    <input id="wishListId-field" name="wishListId" type="hidden"><br>
+                    <input id="itemLineId-field" name="itemLineId" type="hidden"><br>
+-->
+                <div class="field field_v2">
+                    <label for="ItemName-field" class="ha-screen-reader">Navn på Ønske</label>
+                    <input id="itemName-field" class="field__input" placeholder=" e.g. Tøj" name="itemName" type="text"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Navn på ønske</span>
+                    </span>
+                </div>
+
+                <div class="field field_v2">
+                    <label for="itemQTY-field" class="ha-screen-reader">Antal:</label>
+                    <input id="itemQTY-field" class="field__input" placeholder=" e.g. 3" name="itemQTY" type="text"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Antal</span>
+                    </span>
+                </div>
+
+                <div class="field field_v2">
+                    <label for="itemDescription-field" class="ha-screen-reader">Beskrivelse:</label>
+                    <input id="itemDescription-field" class="field__input" placeholder=" e.g. størrelse, farve etc" name="itemDescription"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Beskrivelse</span>
+                    </span>
+                </div>
+
+                <div class="field field_v2">
+                    <label for="itemURL-field" class="ha-screen-reader">Indsæt link:</label>
+                    <input id="itemURL-field" class="field__input" placeholder=" e.g. https://www.magasin.dk/?gclid=CjwKCAjw3POhBhBQEiwAqTCuBmIZ9SX523rE7OUQXyvcYT3ecEXImLS48OOiPNx1DKZyC7E6NurKaRoCbHEQAvD_BwE" name="itemURL" type="text"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Indsæt link</span>
+                    </span>
+                </div>
+
+                <div class="field field_v2">
+                    <label for="itemPrice-field" class="ha-screen-reader">Pris:</label>
+                    <input id="itemPrice-field" class="field__input" placeholder=" e.g. 100" name="itemPrice" type="text"><br>
+                    <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Pris</span>
+                    </span>
+                </div>
+
+<!--
+                    <input id="itemReserved-field" name="itemReserved" type="hidden"><br>
+
+                    <input id="itemReservedBy-field" name="itemReservedBy" type="hidden"><br>
+-->
+                    <input class="submit" type="submit" value="Tilføj ønske"><br>
+            </div>
+        </form>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../css/login.css}" href="../static/css/login.css">
+    <link rel="stylesheet" th:href="@{../css/fragment.css}" href="../static/css/fragment.css">
+
+</head>
+<header th:replace="~{fragments/fragment :: topnav}">
+
+</header>
+<body>
+<div class="login-box">
+    <div th:switch="${session.loginStatus}">
+    <h2 th:case="''">Login</h2>
+    <h2 th:case="'fail'">Forkert brugernavn eller adgangskode</h2>
+    </div>
+    <form action="/login" method="post">
+        <div class="user-box">
+            <input id="user-id" type="text" name="username" required="">
+            <label for="user-id">Email</label>
+        </div>
+        <div class="user-box">
+            <input id="password" type="password" name="pwd" required="">
+            <label for="password">Adgangskode</label>
+        </div>
+        <a>
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="submit" value="Submit">
+        </a>
+    </form>
+</div>
+
+</body>
+</html>

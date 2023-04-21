@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../css/fragment.css}" href="../static/css/fragment.css">
+</head>
+<header th:fragment="topnav">
+
+        <div class="logo"><a th:href="@{/index}" href="/index"> <img th:src="@{../pictures/Goodwish2.png}" src="../static/pictures/Goodwish2.png" alt="Logo"></a></div>
+        <nav class="top-nav">
+            <ul>
+                <li><a th:href="@{/index}" href="/index" class="active">Hjem</a></li>
+                <li><a th:href="@{'/show-user-page/'+${session.UserID}}" href="/show-user-page">ønskelister</a></li>
+                <li><a th:href="@{/adduser}" href="adduser">Opret Bruger</a></li>
+                <li><a th:href="@{/login}" href="/login">Login</a></li>
+                </li>
+            </ul>
+            </ul>
+        </nav>
+
+
+</header>
+<body>
+
+</body>
+</html>
