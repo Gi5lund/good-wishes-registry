@@ -140,7 +140,7 @@ public class HomeController
 				session.setAttribute("wishlists", user.getWishLists());
 				wishUserModel.addAttribute("wishlists", user.getWishLists());
 
-				return "/login";
+				return "login";
 			}
 
 		@PostMapping("/login")
