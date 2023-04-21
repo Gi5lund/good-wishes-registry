@@ -189,6 +189,8 @@ input[type=submit]:hover{
 html, body {
     background: #ffffff;
     font-family: "Montserrat", sans-serif;
+    background-image: url("../pictures/bluegifts.png");
+    background-size: cover;
 }
 
 header {
