@@ -253,8 +253,11 @@ body{
     background-color: #5caafc;
     border-color: #ffffff;
     color: #ffffff;
-    width: 30%;
-    margin-left: 35%;
+    width: 35%;
+    margin-left: 30%;
+    height: 40px;
+    font-size: 16px;
+    border-radius:1.5em;
 }
 
 input:hover {
@@ -276,3 +279,4 @@ input:hover {
     background-image: url("../pictures/bluegifts.png");
     background-size: cover;
 }
+

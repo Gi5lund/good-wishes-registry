@@ -16,7 +16,7 @@
     <form action="/updatewishlist" method="post">
       <div class="page">
 
-          <input id="wishListId-field" name="wishListId" type="text" th:value="${wishList.getWishListId()}" ><br>
+          <input id="wishListId-field" name="wishListId" type="hidden" th:value="${wishList.getWishListId()}" ><br>
 
         <div class="field field_v2">
           <label for="WishListName-field" class="ha-screen-reader">Navn på ønskeliste</label>
@@ -34,7 +34,7 @@
           </span>
         </div>
 
-          <input id="userId-field" name="userId" type="text" th:value="${session.UserID}" ><br>
+          <input id="userId-field" name="userId" type="hidden" th:value="${session.UserID}" ><br>
 
           <input class="submit" type="submit" value="Opdater ønskeliste"><br>
       </div>
