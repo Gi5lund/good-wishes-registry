@@ -88,7 +88,9 @@ section {
     display: flex;
 }
 .trustpilot {
-    justify-content: right;
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
 }
 .trustpilot img {
     justify-content: right;
