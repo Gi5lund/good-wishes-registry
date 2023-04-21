@@ -241,6 +241,7 @@ public class HomeController
 		@GetMapping("/deletewishlist/{wishListId}")
 		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist) {
 
+			wishlistRepository.deleteWishListItemsId(deleteWishlist);
 			wishlistRepository.deleteWishListId(deleteWishlist);
 
 			return "show-user-page";
