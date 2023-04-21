@@ -93,6 +93,11 @@ h4 a:visited {
     text-decoration: none;
     color: black;
 }
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 a.button4{
     display:inline-block;
     padding:0.3em 1.2em;
@@ -109,11 +114,7 @@ a.button4{
     transition: all 0.2s;
     background-color:#5caafc
 }
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .button4 {
     text-align: center;
     align-items: center;
