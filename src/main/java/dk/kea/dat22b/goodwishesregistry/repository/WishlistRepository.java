@@ -216,25 +216,16 @@ public class WishlistRepository
 
 		public void deleteWishListId(int wish_list_id){
 
-//			final String DELETE_QUERY = "DELETE FROM wishlist.wish_list WHERE wish_list_id = ?";
-			final String DELETE_QUERY="DELETE FROM wishlist.wish_list_items WHERE wish_list_id =?";
-			final String DELETE_WISHLIST= "DELETE FROM wishlist.wish_list WHERE wish_list_id = ?";
+			final String DELETE_QUERY = "DELETE FROM wishlist.wish_list WHERE wish_list_id = ?";
+
+
 			try {
 				Connection connection = ConnectionManager.getConnection(DB_URL,UID,PWD);
-				connection.setAutoCommit(false);
 
 				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY);
 				preparedStatement.setInt(1, wish_list_id);
-				preparedStatement.addBatch();
-				preparedStatement=connection.prepareStatement(DELETE_WISHLIST);
-				preparedStatement.setInt(1, wish_list_id);
-				preparedStatement.addBatch();
-
-
-
-
 				preparedStatement.executeUpdate();
-				preparedStatement2.executeUpdate();
+
 			}
 			catch(SQLException e) {
 				System.out.println("Could not delete wishlist");
