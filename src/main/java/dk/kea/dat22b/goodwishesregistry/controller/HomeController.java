@@ -239,12 +239,12 @@ public class HomeController
 			return "redirect:show-user-page/"+updateUserId;
 		}
 		@GetMapping("/deletewishlist/{wishListId}")
-		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist) {
+		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist, HttpSession session) {
 
 			wishlistRepository.deleteWishListItemsId(deleteWishlist);
 			wishlistRepository.deleteWishListId(deleteWishlist);
 
-			return "show-user-page";
+			return "redirect:/show-user-page/"+session.getAttribute("UserID");
 		}
 		@PostMapping("/adduser")
 		public String createUser(@RequestParam("userName") String userName, @RequestParam("userPassword") String userPassword)
