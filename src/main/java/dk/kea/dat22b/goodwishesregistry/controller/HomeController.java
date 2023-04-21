@@ -112,7 +112,7 @@ public class HomeController
 			int wishlistid=(int) session.getAttribute("currentWishList");
 			wishListModel.addAttribute("showWishes", wishlistid);
 
-			return "redirect:showwishes/"+wishlistid;
+			return "redirect:/showwishes/"+wishlistid;
 		}
 
 		@GetMapping("/deletewish/{itemLineId}")
@@ -156,7 +156,7 @@ public class HomeController
 				if (user.getUserName() == null) {
 					loginstatus = "fail";
 					session.setAttribute("loginStatus", loginstatus);
-					return "/login";
+					return "login";
 				}
 				loginstatus = "succes";
 				session.setAttribute("UserID", user.getUserId());
@@ -175,7 +175,7 @@ public class HomeController
 
 				wishUserModel.addAttribute("username", user.getUserName());
 				wishUserModel.addAttribute("wishlists", user.getWishLists());
-				return "redirect:show-user-page/"+user.getUserId();
+				return "redirect:/show-user-page/"+user.getUserId();
 			}
 
 
@@ -208,7 +208,7 @@ public class HomeController
 			WishList current=wishLists.get(wishLists.size()-1);
 			session.setAttribute("currentWishList",current.getWishListId());
 
-			return "redirect:createwish";
+			return "redirect:/createwish";
 		}
 		@GetMapping("/updatewishlist/{wishListId}")
 		public String showUpdateWishList(@PathVariable("wishListId") int wishlistID, Model wishListModel,HttpSession session)
@@ -221,7 +221,7 @@ public class HomeController
 
 			return "updatewishlist";
 		}
-		@PostMapping("updatewishlist")
+		@PostMapping("/updatewishlist")
 		public String updateWishList( @RequestParam("wishListId") int updateWishListId,@RequestParam("WishListName") String updateWishlistName,
 									 @RequestParam("occation") String updateOccation, @RequestParam("userId") int updateUserId, HttpSession session, Model wishUserModel){
 			  session.setAttribute("currentWishList",updateWishListId);
@@ -236,7 +236,7 @@ public class HomeController
 			session.setAttribute("UserID",user.getUserId());
 			wishUserModel.addAttribute("username", user.getUserName());
 			wishUserModel.addAttribute("wishlists", user.getWishLists());
-			return "redirect:show-user-page/"+updateUserId;
+			return "redirect:/show-user-page/"+updateUserId;
 		}
 		@GetMapping("/deletewishlist/{wishListId}")
 		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist, HttpSession session, Model model) {
@@ -255,13 +255,13 @@ public class HomeController
 				newUser.setUserName(userName);
 				newUser.setUserPassword(userPassword);
 				wishlistRepository.addUser(newUser);
-				return "redirect:index";
+				return "redirect:/index";
 			}
 
 		@GetMapping("/adduser")
 		public String showAddUser()
 			{
-				return "/adduser";
+				return "adduser";
 			}
 
 
