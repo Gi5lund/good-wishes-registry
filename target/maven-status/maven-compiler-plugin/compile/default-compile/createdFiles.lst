@@ -1,0 +1,7 @@
+dk\kea\dat22b\goodwishesregistry\model\WishListItems.class
+dk\kea\dat22b\goodwishesregistry\model\WishList.class
+dk\kea\dat22b\goodwishesregistry\model\WishUser.class
+dk\kea\dat22b\goodwishesregistry\utility\ConnectionManager.class
+dk\kea\dat22b\goodwishesregistry\controller\HomeController.class
+dk\kea\dat22b\goodwishesregistry\repository\WishlistRepository.class
+dk\kea\dat22b\goodwishesregistry\GoodWishesRegistryApplication.class
