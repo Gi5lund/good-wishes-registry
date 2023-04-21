@@ -241,6 +241,7 @@ public class HomeController
 		@GetMapping("/deletewishlist/{wishListId}")
 		public String deleteWishList(@PathVariable("wishListId") int deleteWishlist, HttpSession session) {
 
+			wishlistRepository.deleteWishListItemsId(deleteWishlist);
 			wishlistRepository.deleteWishListId(deleteWishlist);
 
 			return "redirect:/show-user-page/"+session.getAttribute("UserID");
